@@ -27,7 +27,7 @@ This code is creating a container with a 100% width (will match parent width) an
 import { Popup } from "@typebot.io/react";
 
 const App = () => {
-  return <Popup typebot="lead-generation-copy-3luzm6b" autoShowDelay={3000} />;
+  return <Popup typebot="lead-generation-copy-3luzm6b" autoShowDelay={9010} />;
 };
 ```
 

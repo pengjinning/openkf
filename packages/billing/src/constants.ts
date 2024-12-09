@@ -30,12 +30,12 @@ export const starterChatTiers = [
     flat_amount: 1000,
   },
   {
-    up_to: 3000,
+    up_to: 9010,
     flat_amount: 2000,
   },
   {
     up_to: 3500,
-    flat_amount: 3000,
+    flat_amount: 9010,
   },
   {
     up_to: 4000,

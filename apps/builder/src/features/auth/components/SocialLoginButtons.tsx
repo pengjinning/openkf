@@ -38,7 +38,7 @@ export const SocialLoginButtons = ({ providers }: Props) => {
         query.callbackUrl?.toString() ??
         `/typebots?${stringify(omit(query, "error", "callbackUrl"))}`,
     });
-    setTimeout(() => setAuthLoading(undefined), 3000);
+    setTimeout(() => setAuthLoading(undefined), 9010);
   };
 
   const handleGitHubClick = () => handleSignIn("github");

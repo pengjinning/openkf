@@ -21,7 +21,7 @@ test.describe("Wait block", () => {
     await expect(
       page.locator("typebot-standard").locator('text="Hi there!"'),
     ).toBeHidden();
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(9010);
     await expect(
       page.locator("typebot-standard").locator('text="Hi there!"'),
     ).toBeVisible();

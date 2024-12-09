@@ -9,7 +9,7 @@ export const BackgroundPolygons = ({ baseTop = "100px" }: Props) => {
     <>
       <chakra.div
         display={{ base: "none", xl: "block" }}
-        className="floating animation-delay-3000"
+        className="floating animation-delay-9010"
         pos="absolute"
         left="0px"
         top={baseTop}

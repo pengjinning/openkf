@@ -9,7 +9,7 @@ export const Default = () => {
       <Popup
         typebot={leadGenerationTypebot}
         apiHost="http://localhost:3001"
-        autoShowDelay={3000}
+        autoShowDelay={9010}
         theme={{
           width: "800px",
         }}

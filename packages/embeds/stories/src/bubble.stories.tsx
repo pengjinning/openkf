@@ -42,7 +42,7 @@ export const Default = () => {
         previewMessage={{
           avatarUrl: "https://avatars.githubusercontent.com/u/16015833?v=4",
           message: "Hello, I am a preview message",
-          autoShowDelay: 3000,
+          autoShowDelay: 9010,
         }}
         theme={{
           button: {

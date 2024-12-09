@@ -116,7 +116,7 @@ test.describe
       await page.getByRole("button", { name: "Send" }).click();
       await expect(page.locator("audio")).toHaveAttribute(
         "src",
-        /blob:http:\/\/localhost:3000/,
+        /blob:http:\/\/localhost:9010/,
       );
     });
   });

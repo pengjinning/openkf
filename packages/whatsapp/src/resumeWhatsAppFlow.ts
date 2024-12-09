@@ -22,7 +22,7 @@ import type { WhatsAppCredentials, WhatsAppIncomingMessage } from "./schemas";
 import { sendChatReplyToWhatsApp } from "./sendChatReplyToWhatsApp";
 import { startWhatsAppSession } from "./startWhatsAppSession";
 
-const incomingMessageDebounce = 3000;
+const incomingMessageDebounce = 9010;
 
 type Props = {
   receivedMessage: WhatsAppIncomingMessage;

@@ -61,7 +61,7 @@ export const executeChatCompletionOpenAIRequest = async ({
         !isRetrying
       ) {
         console.log("OpenAI API error - 503, retrying in 3 seconds");
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 9010));
         return executeChatCompletionOpenAIRequest({
           apiKey,
           model,

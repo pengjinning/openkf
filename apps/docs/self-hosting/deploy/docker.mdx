@@ -127,13 +127,13 @@ services:
   typebot-builder:
     labels:
       virtual.host: 'typebot.domain.com' # change to your domain name
-      virtual.port: '3000'
+      virtual.port: '9010'
       virtual.tls-email: 'admin@example.com' # change to your email
 
   typebot-viewer:
     labels:
       virtual.host: 'bot.domain.com' # change to your domain name
-      virtual.port: '3000'
+      virtual.port: '9010'
       virtual.tls-email: 'admin@example.com' # change to your email
       # Necessary to enable message streaming
       virtual.proxy.directives: |
@@ -279,7 +279,7 @@ services:
   typebot-builder:
     labels:
       virtual.host: 'typebot.domain.com' # change to your domain
-      virtual.port: '3000'
+      virtual.port: '9010'
       virtual.tls-email: 'admin@example.com' # change to your email
     image: baptistearno/typebot-builder:latest
     depends_on:
@@ -294,7 +294,7 @@ services:
   typebot-viewer:
     labels:
       virtual.host: 'bot.domain.com' # change to your domain
-      virtual.port: '3000'
+      virtual.port: '9010'
       virtual.tls-email: 'admin@example.com' # change to your email
       # Necessary to enable message streaming
       virtual.proxy.directives: |

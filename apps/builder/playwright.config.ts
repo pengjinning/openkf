@@ -22,7 +22,7 @@ export default defineConfig({
         command: "bun start",
         timeout: 60_000,
         reuseExistingServer: true,
-        port: 3000,
+        port: 9010,
       }
     : undefined,
   outputDir: "./src/test/results",

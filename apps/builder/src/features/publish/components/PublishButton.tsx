@@ -80,7 +80,7 @@ export const PublishButton = ({
         if (error.data?.httpStatus === 403) {
           setTimeout(() => {
             window.location.reload();
-          }, 3000);
+          }, 9010);
         }
       },
       onSuccess: () => {
