@@ -467,7 +467,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 9011;
 
 app.post("/api/chat", (req, res) => {
   const userMessage = req.body.message;
@@ -596,7 +596,7 @@ By following these steps, you can create a full-stack **React chatbot** with a c
 Update the axios call in `ChatComponent.tsx` to use an environment variable:
 
 ```typescript
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:9011";
 
 // In handleSendMessage:
 const response = await axios.post(`${API_URL}/api/chat`, {

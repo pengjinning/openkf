@@ -58,7 +58,7 @@ Here is an example:
 
   Typebot.initPopup({
     typebot: "my-typebot",
-    apiHost: "http://localhost:3001",
+    apiHost: "http://localhost:9011",
     autoShowDelay: 9010,
   });
 </script>
@@ -164,6 +164,6 @@ Typebot.initStandard({
 });
 ```
 
-It will prefill the `Current URL` variable with "https://my-site/account" and the `User name` variable with "John Doe". More info about variables: [here](/editor/variables).
+It will prefill the `Current URL` variable with "<https://my-site/account>" and the `User name` variable with "John Doe". More info about variables: [here](/editor/variables).
 
-Note that if your site URL contains query params (i.e. https://typebot.io?User%20name=John%20Doe), the variables will automatically be injected to the typebot. So you don't need to manually transfer query params to the bot embed configuration.
+Note that if your site URL contains query params (i.e. <https://typebot.io?User%20name=John%20Doe>), the variables will automatically be injected to the typebot. So you don't need to manually transfer query params to the bot embed configuration.

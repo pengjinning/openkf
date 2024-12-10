@@ -1,4 +1,4 @@
-version: '3.3'
+version: "3.3"
 
 volumes:
   db-data:
@@ -13,10 +13,10 @@ services:
       - POSTGRES_DB=typebot
       - POSTGRES_PASSWORD=typebot
     healthcheck:
-        test: ["CMD-SHELL", "pg_isready -U postgres"]
-        interval: 5s
-        timeout: 5s
-        retries: 5
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   typebot-builder:
     image: baptistearno/typebot-builder:latest
     restart: always
@@ -24,9 +24,9 @@ services:
       typebot-db:
         condition: service_healthy
     ports:
-      - '8080:9010'
+      - "8080:9010"
     extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - "host.docker.internal:host-gateway"
     env_file: .env
 
   typebot-viewer:
@@ -36,5 +36,5 @@ services:
         condition: service_healthy
     restart: always
     ports:
-      - '8081:9010'
+      - "8081:9010"
     env_file: .env

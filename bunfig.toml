@@ -2,4 +2,5 @@
 print = "yarn"
 
 [install]
-registry = { url = "https://registry.npmjs.org", token = "$NPM_TOKEN" }
+# registry = { url = "https://registry.npmjs.org", token = "$NPM_TOKEN" }
+registry = { url = "https://registry.npmmirror.com", token = "$NPM_TOKEN" }

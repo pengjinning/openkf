@@ -35,7 +35,7 @@ export const Default = () => {
 
       <Bubble
         typebot={"my-typebot-2b532x1"}
-        apiHost="http://localhost:3001"
+        apiHost="http://localhost:9011"
         prefilledVariables={{
           Name: ["John"],
         }}

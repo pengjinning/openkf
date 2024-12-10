@@ -168,7 +168,7 @@ I highly recommend using an external SMTP service. There are tons of options out
 If, however, you don't want to, you can instantiate an SMTP server in the docker-compose file.
 
 ```yml
-version: '3.3'
+version: "3.3"
 services:
   mail:
     image: bytemark/smtp
@@ -191,7 +191,7 @@ You can merge this compose file with the main one.
 If you don't already have an S3 storage available, you could include it in your docker-compose file:
 
 ```yml
-version: '3.3'
+version: "3.3"
 
 volumes:
   s3-data:
@@ -201,7 +201,7 @@ services:
     image: minio/minio
     command: server /data
     ports:
-      - '9000:9000'
+      - "9000:9000"
     environment:
       MINIO_ROOT_USER: minio
       MINIO_ROOT_PASSWORD: minio123

@@ -76,7 +76,7 @@ Go into the builder directory and deploy the start script with PM2
 cd apps/builder
 pm2 start --name=typebot bun -- start
 # or select a different port
-pm2 start --name=typebot bun -- start -p 3001
+pm2 start --name=typebot bun -- start -p 9011
 ```
 
 ### Deploy the viewer
@@ -112,7 +112,7 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
     location ^~ / {
-         proxy_pass http://localhost:3001;
+         proxy_pass http://localhost:9011;
          proxy_http_version 1.1;
          proxy_set_header Upgrade $http_upgrade;
          proxy_set_header Connection 'upgrade';
