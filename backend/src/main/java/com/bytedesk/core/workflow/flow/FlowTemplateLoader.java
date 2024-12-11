@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-11 12:24:40
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 13:27:49
+ * @LastEditTime: 2024-12-11 14:27:07
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -14,6 +14,7 @@
  */
 package com.bytedesk.core.workflow.flow;
 
+import com.alibaba.fastjson2.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -76,24 +78,25 @@ public class FlowTemplateLoader {
     }
 
     // 转换为 FlowEntity
-    FlowEntity flow = new FlowEntity();
+    FlowEntity flow = FlowEntity.builder().build();
     flow.setUid(template.getId());
     flow.setName(template.getName());
     flow.setIcon(template.getIcon());
-    flow.setGroups(objectMapper.valueToTree(template.getGroups()).toString());
-    flow.setEvents(objectMapper.valueToTree(template.getEvents()).toString());
-    flow.setVariables(objectMapper.valueToTree(template.getVariables()).toString());
-    flow.setEdges(objectMapper.valueToTree(template.getEdges()).toString());
-    flow.setTheme(objectMapper.valueToTree(template.getTheme()).toString());
-    flow.setSettings(objectMapper.valueToTree(template.getSettings()).toString());
+    flow.setGroups(JSON.toJSONString(template.getGroups()));
+    flow.setEvents(JSON.toJSONString(template.getEvents()));
+    flow.setVariables(JSON.toJSONString(template.getVariables()));
+    flow.setEdges(JSON.toJSONString(template.getEdges()));
+    flow.setTheme(JSON.toJSONString(template.getTheme()));
+    flow.setSettings(JSON.toJSONString(template.getSettings()));
     flow.setSelectedThemeTemplateId(template.getSelectedThemeTemplateId());
     flow.setPublicId(template.getPublicId());
     flow.setCustomDomain(template.getCustomDomain());
-    flow.setResultsTablePreferences(objectMapper.valueToTree(template.getResultsTablePreferences()).toString());
+    flow.setResultsTablePreferences(JSON.toJSONString(template.getResultsTablePreferences()));
     flow.setArchived(template.isArchived());
     flow.setClosed(template.isClosed());
     flow.setWhatsAppCredentialsId(template.getWhatsAppCredentialsId());
-
+    flow.setCreatedAt(LocalDateTime.now());
+    flow.setUpdatedAt(LocalDateTime.now());
     flowRepository.save(flow);
   }
 }
