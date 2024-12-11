@@ -1,162 +1,79 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Stack, Box, Text, Button, SimpleGrid, Card } from '@/components/ui';
-import { PlusIcon } from '@/components/icons';
-import { Flow } from '@/types/flow';
-import { Template } from '@/types/template';
-import { getPublicTemplates } from '@/api/template';
-import { getBots, createBot } from '@/api/bot';
-import { Bot } from '@/types/bot';
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-12-10 11:16:50
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-12-11 14:57:10
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM –
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license.
+ *  仅支持企业内部员工自用，严禁私自用于销售、二次销售或者部署SaaS方式销售
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE
+ *  contact: 270580156@qq.com
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved.
+ */
+import { FC, useEffect, useState } from "react";
+import { Stack, Text, Button, SimpleGrid, Card } from "@/components/ui";
+import { useNavigate } from "react-router-dom";
+import { getFlowsByOrg } from "@/api/flow";
 
-export const OnboardingPage = () => {
+interface Flow {
+  id: string;
+  name: string;
+  icon?: string;
+  description?: string;
+}
+
+export const OnboardingPage: FC = () => {
   const navigate = useNavigate();
-  const [flows, setFlows] = useState<Bot[]>([]);
-  const [templates, setTemplates] = useState<Template[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [flows, setFlows] = useState<Flow[]>([]);
 
   useEffect(() => {
-    loadData();
+    const fetchFlows = async () => {
+      try {
+        const response = await getFlowsByOrg();
+        if (response.success) {
+          setFlows(response.data.content);
+        }
+      } catch (error) {
+        console.error("Failed to fetch flows:", error);
+      }
+    };
+    fetchFlows();
   }, []);
 
-  const loadData = async () => {
-    try {
-      setLoading(true);
-      const [flowsData, templatesData] = await Promise.all([
-        getBots(),
-        getPublicTemplates()
-      ]);
-      setFlows(flowsData);
-      setTemplates(templatesData);
-    } catch (error) {
-      console.error('Failed to load data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleCreateFromTemplate = async (template: Template) => {
-    try {
-      const defaultTheme = {
-        general: {
-          font: 'Inter',
-          background: '#ffffff',
-          containerWidth: '600px'
-        },
-        chat: {
-          hostBubbles: {
-            backgroundColor: '#f7f8ff',
-            color: '#303235'
-          },
-          guestBubbles: {
-            backgroundColor: '#ff8e21',
-            color: '#ffffff'
-          },
-          inputs: {
-            backgroundColor: '#ffffff',
-            color: '#303235',
-            placeholderColor: '#9095a0'
-          },
-          buttons: {
-            backgroundColor: '#0042da',
-            color: '#ffffff'
-          }
-        }
-      };
-
-      const newBot = await createBot({
-        name: `Copy of ${template.name}`,
-        description: template.description,
-        settings: {
-          general: {
-            isPublic: template.settings?.general?.isPublic ?? false,
-            isClosed: false,
-            isArchived: false
-          },
-          typing: {
-            enabled: true,
-            speed: 300,
-            delay: 1000
-          },
-          theme: template.settings?.theme ?? defaultTheme,
-          security: {},
-          analytics: {
-            enabled: false
-          }
-        }
-      });
-      navigate(`/bot/${newBot.id}/edit`);
-    } catch (error) {
-      console.error('Failed to create bot:', error);
-    }
-  };
-
   return (
-    <Stack spacing={8} p={8}>
-      {/* 已创建的流程 */}
-      <Box>
-        <Stack direction="row" justify="space-between" align="center" mb={4}>
-          <Text fontSize="2xl" fontWeight="bold">我的流程</Text>
-          <Button 
-            leftIcon={<PlusIcon />}
-            onClick={() => navigate('/bot/new')}
+    <Stack p={8} spacing={6}>
+      <Text fontSize="2xl" fontWeight="bold">
+        欢迎使用 Bytedesk
+      </Text>
+      <Button onClick={() => navigate("/onboarding")}>开始使用</Button>
+
+      <Text fontSize="xl" fontWeight="semibold" mt={8}>
+        我的工作流
+      </Text>
+
+      <SimpleGrid columns={[1, 2, 3]} spacing={6}>
+        {flows.map((flow) => (
+          <Card
+            key={flow.id}
+            p={4}
+            cursor="pointer"
+            onClick={() => navigate(`/flow/${flow.id}`)}
           >
-            创建新流程
-          </Button>
-        </Stack>
-
-        {flows.length > 0 ? (
-          <SimpleGrid columns={3} spacing={4}>
-            {flows.map(flow => (
-              <Card key={flow.id} p={4}>
-                <Stack>
-                  <Text fontWeight="bold">{flow.name}</Text>
-                  {flow.description && (
-                    <Text color="gray.500" noOfLines={2}>
-                      {flow.description}
-                    </Text>
-                  )}
-                  <Button 
-                    onClick={() => navigate(`/bot/${flow.id}/edit`)}
-                    size="sm"
-                  >
-                    编辑
-                  </Button>
-                </Stack>
-              </Card>
-            ))}
-          </SimpleGrid>
-        ) : (
-          <Text color="gray.500">还没有创建任何流程</Text>
-        )}
-      </Box>
-
-      {/* 模板列表 */}
-      <Box>
-        <Text fontSize="2xl" fontWeight="bold" mb={4}>
-          从模板创建
-        </Text>
-        
-        <SimpleGrid columns={3} spacing={4}>
-          {templates.map(template => (
-            <Card key={template.id} p={4}>
-              <Stack>
-                <Text fontWeight="bold">{template.name}</Text>
-                {template.description && (
-                  <Text color="gray.500" noOfLines={2}>
-                    {template.description}
-                  </Text>
-                )}
-                <Button
-                  onClick={() => handleCreateFromTemplate(template)}
-                  size="sm"
-                >
-                  使用此模板
-                </Button>
-              </Stack>
-            </Card>
-          ))}
-        </SimpleGrid>
-      </Box>
+            <Stack>
+              <Text fontSize="lg">
+                {flow.icon} {flow.name}
+              </Text>
+              {flow.description && (
+                <Text color="gray.600" fontSize="sm">
+                  {flow.description}
+                </Text>
+              )}
+            </Stack>
+          </Card>
+        ))}
+      </SimpleGrid>
     </Stack>
   );
 };

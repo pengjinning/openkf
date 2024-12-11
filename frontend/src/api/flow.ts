@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Flow } from '@/types/flow'
+import { request } from '@/utils/request';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -34,4 +35,16 @@ export const getFlowVersions = async (id: string): Promise<Flow[]> => {
 export const restoreFlowVersion = async (id: string, versionId: string): Promise<Flow> => {
   const { data } = await axios.post(`${API_BASE_URL}/api/flows/${id}/versions/${versionId}/restore`)
   return data
-} 
+}
+
+export const getFlowsByOrg = () => {
+  return request({
+    url: '/api/v1/flow/query/org',
+    method: 'post',
+    data: {
+      page: 0,
+      size: 20,
+      sort: 'createdAt,desc'
+    }
+  });
+}; 
