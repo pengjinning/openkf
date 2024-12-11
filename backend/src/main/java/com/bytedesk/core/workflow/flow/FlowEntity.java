@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 17:01:55
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 10:55:16
+ * @LastEditTime: 2024-12-11 11:54:20
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -42,29 +42,29 @@ public class FlowEntity extends BaseEntity {
 
     private String icon;
 
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    @Column(name = "flow_groups", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String groups = "[]";
 
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    @Column(name = "flow_events", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String events = "[]";
 
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    @Column(name = "flow_variables", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String variables = "[]";
 
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    @Column(name = "flow_edges", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String edges = "[]";
 
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    @Column(name = "flow_theme", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String theme = "{}";
 
     private String selectedThemeTemplateId;
-
-    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
+    
+    @Column(name = "flow_settings", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String settings = "{}";
 

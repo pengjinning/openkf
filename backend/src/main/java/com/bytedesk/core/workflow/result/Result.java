@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 11:35:52
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 09:58:25
+ * @LastEditTime: 2024-12-11 11:53:09
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 import com.bytedesk.core.base.BaseEntity;
+import com.bytedesk.core.constant.TypeConsts;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -33,15 +34,13 @@ public class Result extends BaseEntity {
     @Column(name = "bot_id")
     private String botId;
 
-    @Column(columnDefinition = "jsonb")
+    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     private String answersJson;
 
-    @Column(columnDefinition = "jsonb")
+    @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     private String variablesJson;
 
     private String status; // COMPLETED, IN_PROGRESS, etc.
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     @Transient
     private Map<String, Object> answers;

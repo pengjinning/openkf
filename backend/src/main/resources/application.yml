@@ -1,14 +1,18 @@
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5433/typebot4
-    username: postgres
+    # url: jdbc:postgresql://127.0.0.1:5433/typebot4
+    # username: postgres
+    # password: r8FqfdbWUaN3
+    url: jdbc:mysql://127.0.0.1:3306/bytedesk_im
+    username: root
     password: r8FqfdbWUaN3
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        # dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
     show-sql: true
   mail:
