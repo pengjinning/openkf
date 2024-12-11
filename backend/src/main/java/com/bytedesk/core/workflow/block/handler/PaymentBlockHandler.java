@@ -6,12 +6,12 @@ import com.bytedesk.core.workflow.block.model.Block;
 import com.bytedesk.core.workflow.block.model.BlockType;
 import com.bytedesk.core.workflow.block.model.options.PaymentBlockOptions;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stripe.Stripe;
-import com.stripe.model.PaymentIntent;
-import com.stripe.param.PaymentIntentCreateParams;
+// import com.stripe.Stripe;
+// import com.stripe.model.PaymentIntent;
+// import com.stripe.param.PaymentIntentCreateParams;
 
 import lombok.extern.slf4j.Slf4j;
-import java.math.BigDecimal;
+// import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,38 +70,38 @@ public class PaymentBlockHandler implements BlockHandler {
     }
 
     private void handleStripePayment(PaymentBlockOptions options, Map<String, Object> result) {
-        try {
-            Stripe.apiKey = options.getCredentials().get("secretKey");
+        // try {
+        //     Stripe.apiKey = options.getCredentials().get("secretKey");
             
-            PaymentIntentCreateParams.Builder paramsBuilder = PaymentIntentCreateParams.builder()
-                .setAmount(options.getAmount().multiply(new BigDecimal(100)).longValue())
-                .setCurrency(options.getCurrency().toLowerCase())
-                .setDescription(options.getDescription())
-                .setAutomaticPaymentMethods(
-                    PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
-                        .setEnabled(true)
-                        .build()
-                );
+        //     PaymentIntentCreateParams.Builder paramsBuilder = PaymentIntentCreateParams.builder()
+        //         .setAmount(options.getAmount().multiply(new BigDecimal(100)).longValue())
+        //         .setCurrency(options.getCurrency().toLowerCase())
+        //         .setDescription(options.getDescription())
+        //         .setAutomaticPaymentMethods(
+        //             PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
+        //                 .setEnabled(true)
+        //                 .build()
+        //         );
 
-            if (options.getReturnUrl() != null) {
-                paramsBuilder.setReturnUrl(options.getReturnUrl());
-            }
+        //     if (options.getReturnUrl() != null) {
+        //         paramsBuilder.setReturnUrl(options.getReturnUrl());
+        //     }
 
-            PaymentIntent paymentIntent = PaymentIntent.create(paramsBuilder.build());
+        //     PaymentIntent paymentIntent = PaymentIntent.create(paramsBuilder.build());
             
-            result.put("clientSecret", paymentIntent.getClientSecret());
-            result.put("paymentIntentId", paymentIntent.getId());
-            result.put("success", true);
-            result.put("message", options.getSuccessMessage());
+        //     result.put("clientSecret", paymentIntent.getClientSecret());
+        //     result.put("paymentIntentId", paymentIntent.getId());
+        //     result.put("success", true);
+        //     result.put("message", options.getSuccessMessage());
             
-            if (options.getVariableName() != null) {
-                result.put(options.getVariableName(), paymentIntent.getId());
-            }
+        //     if (options.getVariableName() != null) {
+        //         result.put(options.getVariableName(), paymentIntent.getId());
+        //     }
             
-        } catch (Exception e) {
-            log.error("Stripe payment failed", e);
-            throw new RuntimeException("Failed to create payment intent", e);
-        }
+        // } catch (Exception e) {
+        //     log.error("Stripe payment failed", e);
+        //     throw new RuntimeException("Failed to create payment intent", e);
+        // }
     }
 
     private void handlePaypalPayment(PaymentBlockOptions options, Map<String, Object> result) {

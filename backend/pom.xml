@@ -82,11 +82,11 @@
         </dependency>
         
         <!-- Stripe -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.stripe</groupId>
             <artifactId>stripe-java</artifactId>
             <version>22.21.0</version>
-        </dependency>
+        </dependency> -->
         
         <!-- Test -->
         <dependency>
