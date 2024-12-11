@@ -1,2 +1,2 @@
-io/typebot/features/block/handler/SetVariableBlockHandler$1.class
-io/typebot/features/block/handler/ABTestBlockHandler$1.class
+com/bytedesk/core/workflow/block/handler/ABTestBlockHandler$1.class
+com/bytedesk/core/workflow/block/handler/SetVariableBlockHandler$1.class
