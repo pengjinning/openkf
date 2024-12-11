@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-11 12:24:40
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 13:21:38
+ * @LastEditTime: 2024-12-11 13:27:49
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -30,7 +30,7 @@ public class FlowTemplateLoader {
 
   private final ResourceLoader resourceLoader;
   private final FlowRepository flowRepository;
-  private final ObjectMapper objectMapper; 
+  private final ObjectMapper objectMapper;
 
   @PostConstruct
   public void loadTemplates() throws IOException {

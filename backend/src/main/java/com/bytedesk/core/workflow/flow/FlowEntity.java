@@ -25,9 +25,11 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @Entity
 @Table(name = "bytedesk_core_workflow_flow")
 @EqualsAndHashCode(callSuper = true)
@@ -35,35 +37,40 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FlowEntity extends BaseEntity {
 
-
     private String name;
 
     private String description;
 
     private String icon;
 
+    @Builder.Default
     @Column(name = "flow_groups", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String groups = "[]";
 
+    @Builder.Default
     @Column(name = "flow_events", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String events = "[]";
 
+    @Builder.Default
     @Column(name = "flow_variables", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String variables = "[]";
 
+    @Builder.Default
     @Column(name = "flow_edges", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String edges = "[]";
 
+    @Builder.Default
     @Column(name = "flow_theme", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String theme = "{}";
 
     private String selectedThemeTemplateId;
     
+    @Builder.Default
     @Column(name = "flow_settings", columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String settings = "{}";
@@ -72,12 +79,15 @@ public class FlowEntity extends BaseEntity {
 
     private String customDomain;
 
+    @Builder.Default
     @Column(columnDefinition = TypeConsts.COLUMN_TYPE_JSON)
     @JdbcTypeCode(SqlTypes.JSON)
     private String resultsTablePreferences = "{}";
 
+    @Builder.Default
     private boolean isArchived = false;
 
+    @Builder.Default
     private boolean isClosed = false;
 
     private String whatsAppCredentialsId;
