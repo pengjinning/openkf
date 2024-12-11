@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 12:15:41
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 09:46:27
+ * @LastEditTime: 2024-12-11 11:24:19
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -16,44 +16,93 @@ package com.bytedesk.core.workflow.flow;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import com.bytedesk.core.base.BaseRestController;
+import com.bytedesk.core.utils.JsonResult;
 
 @RestController
 @RequestMapping("/api/v1/flow")
 @RequiredArgsConstructor
-public class FlowController {
-    private final FlowService botService;
+public class FlowController extends BaseRestController<FlowRequest> {
 
-    @PostMapping
-    public Flow createFlow(@RequestBody Flow bot) {
-        return botService.createFlow(bot);
+    private final FlowRestService flowService;
+
+    @Override
+    public ResponseEntity<?> queryByOrg(FlowRequest request) {
+
+        Page<FlowResponse> page = flowService.queryByOrg(request);
+
+        return ResponseEntity.ok(JsonResult.success(page));
     }
 
-    @GetMapping("/{id}")
-    public Flow getFlow(@PathVariable String id) {
-        return botService.getFlow(id);
+    @Override
+    public ResponseEntity<?> queryByUser(FlowRequest request) {
+
+        Page<FlowResponse> page = flowService.queryByUser(request);
+
+        return ResponseEntity.ok(JsonResult.success(page));
     }
 
-    @PutMapping("/{id}")
-    public Flow updateFlow(@PathVariable String id, @RequestBody Flow bot) {
-        return botService.updateFlow(id, bot);
+    @Override
+    public ResponseEntity<?> create(FlowRequest request) {
+
+        FlowResponse response = flowService.create(request);
+
+        return ResponseEntity.ok(JsonResult.success(response));
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteFlow(@PathVariable String id) {
-        botService.deleteFlow(id);
+    @Override
+    public ResponseEntity<?> update(FlowRequest request) {
+
+        FlowResponse response = flowService.update(request);
+
+        return ResponseEntity.ok(JsonResult.success(response));
     }
 
-    // @GetMapping("/workspace/{workspaceId}")
-    // public List<Flow> getWorkspaceFlows(@PathVariable String workspaceId) {
-    //     return botService.getWorkspaceFlows(workspaceId);
+    @Override
+    public ResponseEntity<?> delete(FlowRequest request) {
+
+        flowService.delete(request);
+
+        return ResponseEntity.ok(JsonResult.success());
+    }
+
+    // @GetMapping
+    // public List<FlowEntity> getFlows(@RequestParam String orgUid) {
+    // return flowService.getFlowsByOrgUid(orgUid);
     // }
 
-    @PostMapping("/{id}/publish")
-    public Flow publishFlow(@PathVariable String id, @RequestBody Map<String, String> body) {
-        String publishedTypebotId = body.get("publishedTypebotId");
-        return botService.publishFlow(id, publishedTypebotId);
-    }
+    // @GetMapping("/{id}")
+    // public FlowEntity getFlow(@PathVariable Long id) {
+    // return flowService.getFlowById(id);
+    // }
+
+    // @PostMapping
+    // public FlowEntity createFlow(@RequestBody FlowEntity flow) {
+    // return flowService.createFlow(flow);
+    // }
+
+    // @PutMapping("/{id}")
+    // public FlowEntity updateFlow(@PathVariable Long id, @RequestBody FlowEntity
+    // flow) {
+    // return flowService.updateFlow(id, flow);
+    // }
+
+    // @DeleteMapping("/{id}")
+    // public void deleteFlow(@PathVariable Long id) {
+    // flowService.deleteFlow(id);
+    // }
+
+    // @GetMapping("/public/{publicId}")
+    // public FlowEntity getPublicFlow(@PathVariable String publicId) {
+    // return flowService.getFlowByPublicId(publicId);
+    // }
+
+    // @GetMapping("/domain/{customDomain}")
+    // public FlowEntity getFlowByDomain(@PathVariable String customDomain) {
+    // return flowService.getFlowByCustomDomain(customDomain);
+    // }
 }

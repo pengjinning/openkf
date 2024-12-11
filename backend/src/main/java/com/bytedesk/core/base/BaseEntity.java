@@ -43,6 +43,7 @@ import java.time.LocalDateTime;
  * 
  * //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = timezone)
  * config in properties
+ * 
  * @see https://docs.spring.io/spring-data/jpa/reference/auditing.html
  * @author im.bytedesk.com
  */
@@ -55,19 +56,19 @@ public abstract class BaseEntity implements Serializable {
     // private static final String timezone = "GMT+8";
 
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     // @NotBlank 在应用层（业务逻辑或表单验证）确保uid字段在提交时必须是非空且去除空格后有实际内容的。
-	// nullable = false 通过@Column注解告知JPA，数据库中的uuid列不允许NULL值，这是一个数据库级别的约束
-	@NotBlank(message = "uid is required")
-	@Column(name = "uuid", unique = true, nullable = false)
-	private String uid;
-    
+    // nullable = false 通过@Column注解告知JPA，数据库中的uuid列不允许NULL值，这是一个数据库级别的约束
+    @NotBlank(message = "uid is required")
+    @Column(name = "uuid", unique = true, nullable = false)
+    private String uid;
+
     // 乐观锁版本字段，每次更新时版本号加1
     @Version
     private int version;
-    
+
     // 在配置文件中存储时区信息，TODO: 应用层处理时区转换？
     // 数据库DDL中： created_at timestamp(6) without time zone,
     // @Temporal(TemporalType.TIMESTAMP)
@@ -81,8 +82,8 @@ public abstract class BaseEntity implements Serializable {
     private LocalDateTime updatedAt;
 
     // soft delete
-	@Column(name = "is_deleted")
-	private boolean deleted = false;
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
 
     private String orgUid;
 }

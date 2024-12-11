@@ -41,7 +41,7 @@ public class ABTestBlockHandler implements BlockHandler {
         
         try {
             TestVariant selectedVariant;
-            String persistedVariantId = (String) context.get(block.getId() + "_variant");
+            String persistedVariantId = (String) context.get(block.getUid() + "_variant");
             
             if (persistedVariantId != null && options.isPersistentSelection()) {
                 selectedVariant = options.getVariants().stream()
@@ -49,27 +49,27 @@ public class ABTestBlockHandler implements BlockHandler {
                     .findFirst()
                     .orElse(null);
             } else {
-                selectedVariant = selectVariant(
-                    options.getVariants(), 
-                    options.getSelectionMode(), 
-                    block.getId()
-                );
+                // selectedVariant = selectVariant(
+                //     options.getVariants(), 
+                //     options.getSelectionMode(), 
+                //     block.getUid()
+                // );
                 
-                if (options.isPersistentSelection()) {
-                    result.put(block.getId() + "_variant", selectedVariant.getId());
-                }
+                // if (options.isPersistentSelection()) {
+                //     result.put(block.getId() + "_variant", selectedVariant.getId());
+                // }
             }
             
-            if (selectedVariant != null) {
-                if (options.getVariableName() != null) {
-                    result.put(options.getVariableName(), selectedVariant.getId());
-                }
-                result.put("selectedVariant", selectedVariant);
-                result.put("success", true);
-            } else {
-                result.put("error", "No variant selected");
-                result.put("success", false);
-            }
+            // if (selectedVariant != null) {
+            //     if (options.getVariableName() != null) {
+            //         result.put(options.getVariableName(), selectedVariant.getId());
+            //     }
+            //     result.put("selectedVariant", selectedVariant);
+            //     result.put("success", true);
+            // } else {
+            //     result.put("error", "No variant selected");
+            //     result.put("success", false);
+            // }
             
         } catch (Exception e) {
             log.error("A/B test selection failed", e);

@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 11:35:08
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 09:43:20
+ * @LastEditTime: 2024-12-11 11:13:40
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -15,15 +15,23 @@
 package com.bytedesk.core.workflow.flow;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+// import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import java.util.Optional;
+// import java.util.List;
 
 @Repository
-public interface FlowRepository extends JpaRepository<Flow, String> {
-    // List<Flow> findByWorkspaceId(String workspaceId);
+public interface FlowRepository extends JpaRepository<FlowEntity, Long>, JpaSpecificationExecutor<FlowEntity> {
 
-    List<Flow> findByCreatedBy(String userId);
+    Optional<FlowEntity> findByUid(String uid);
 
-    List<Flow> findByPublishedTypebotId(String publishedTypebotId);
+    // @Query("SELECT f FROM FlowEntity f WHERE f.deleted = false AND f.orgUid = ?1")
+    // List<FlowEntity> findByOrgUid(String orgUid);
+
+    // @Query("SELECT f FROM FlowEntity f WHERE f.deleted = false AND f.publicId = ?1")
+    // FlowEntity findByPublicId(String publicId);
+
+    // @Query("SELECT f FROM FlowEntity f WHERE f.deleted = false AND f.customDomain = ?1")
+    // FlowEntity findByCustomDomain(String customDomain);
 }
