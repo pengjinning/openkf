@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-11 12:24:40
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-11 12:31:33
+ * @LastEditTime: 2024-12-11 13:21:38
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -30,16 +30,34 @@ public class FlowTemplateLoader {
 
   private final ResourceLoader resourceLoader;
   private final FlowRepository flowRepository;
-  private final ObjectMapper objectMapper;
+  private final ObjectMapper objectMapper; 
 
   @PostConstruct
   public void loadTemplates() throws IOException {
     // 加载所有模板文件
     String[] templates = {
-        "workflows/lead-gen.json",
         "workflows/audio-chat-gpt.json",
         "workflows/basic-chat-gpt.json",
         "workflows/chat-gpt-personas.json",
+        "workflows/customer-support.json",
+        "workflows/digital-product-payment.json",
+        "workflows/dog-insurance-offer.json",
+        "workflows/faq.json",
+        "workflows/high-ticket-lead-follow-up.json",
+        "workflows/lead-gen-ai.json",
+        "workflows/lead-gen.json",
+        "workflows/lead-magnet.json",
+        "workflows/lead-scoring.json",
+        "workflows/movie-recommendation.json",
+        "workflows/nps.json",
+        "workflows/onboarding.json",
+        "workflows/openai-assistant-chat.json",
+        "workflows/openai-conditions.json",
+        "workflows/product-recommendation.json",
+        "workflows/quick-carb-calculator.json",
+        "workflows/quiz.json",
+        "workflows/savings-estimator.json",
+        "workflows/skin-typology.json"
     };
 
     for (String templatePath : templates) {
