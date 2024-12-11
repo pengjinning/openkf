@@ -18,7 +18,7 @@
       "blocks": [
         {
           "id": "kjlf184vxf0uorniwje28iqb",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vh5bxx07kl3016wr1undh2yb3",
             "expressionToEvaluate": "2f584d1ffe2b7fb082dd4e05038e9bd7"
@@ -105,7 +105,7 @@
         },
         {
           "id": "gd4lt2pcljer6zaf7v9hkr1k",
-          "type": "Webhook",
+          "type": "webhook",
           "options": {
             "variablesForTest": [
               {
@@ -166,7 +166,7 @@
         {
           "id": "j7pm34um4piuyabwlobjc356",
           "outgoingEdgeId": "tfuuwjnpn7mftd5s65mbhytd",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vwewa4yugqch2sswdpneszk3i",
             "type": "Map item with same index",
@@ -193,7 +193,7 @@
         },
         {
           "id": "pwxb57b8nc2bp764vcdstois",
-          "type": "Webhook",
+          "type": "webhook",
           "options": {
             "variablesForTest": [
               {
@@ -254,7 +254,7 @@
         {
           "id": "mgn6uuw2yebmengsukjramjx",
           "outgoingEdgeId": "ual6xszx6tfcxqrnihc6zrvx",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vzslfw8oyo1f08uo5rpkegn0x",
             "type": "Map item with same index",
@@ -290,7 +290,7 @@
         },
         {
           "id": "a2datk3pv8o6xgitwjsq61m2",
-          "type": "Webhook",
+          "type": "webhook",
           "options": {
             "variablesForTest": [
               {
@@ -349,7 +349,7 @@
         {
           "id": "vudr8jrv2k3x0ubemt39tv7a",
           "outgoingEdgeId": "r4wyd2185zhen98r5pmx53g9",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vzslfw8oyo1f08uo5rpkegn0x",
             "type": "Map item with same index",
@@ -378,7 +378,7 @@
         },
         {
           "id": "xag9d5i5td40kdt3poyq5g4b",
-          "type": "Webhook",
+          "type": "webhook",
           "options": {
             "variablesForTest": [
               {
@@ -425,7 +425,7 @@
         },
         {
           "id": "d0rsus9shxj8iowczbcaw53i",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vwitf3um5uweynypc0hxxwm14",
             "expressionToEvaluate": "https://image.tmdb.org/t/p/w185{{Poster path}}"
@@ -465,12 +465,12 @@
     },
     {
       "id": "x4d8cdsyzoqz6vzsurnb8twc",
-      "title": "Redirect to IMDB",
+      "title": "redirect to IMDB",
       "graphCoordinates": { "x": 1523.21, "y": 1433.33 },
       "blocks": [
         {
           "id": "mw0e0bzwiokhndkkncp9niu2",
-          "type": "Redirect",
+          "type": "redirect",
           "options": {
             "url": "https://m.imdb.com/title/{{IMDB ID}}"
           }
@@ -484,7 +484,7 @@
       "blocks": [
         {
           "id": "efto9jivvcvomj3kltf57hbb",
-          "type": "Jump",
+          "type": "jump",
           "options": {
             "groupId": "mjnkukpkpvf4ha2g4n5m804v",
             "blockId": "tzf45bvd8iquoxz7qgta8v94"

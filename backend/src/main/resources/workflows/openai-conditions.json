@@ -28,7 +28,7 @@
         {
           "id": "ovgk70u0kfxrbtz9dy4e040o",
           "outgoingEdgeId": "n396v90ad7quz0gwygr6n5fc",
-          "type": "text input",
+          "type": "text_input",
           "options": { "variableId": "vudksu3zyrat6s1bq6qne0rx3" }
         }
       ]
@@ -66,7 +66,7 @@
         {
           "id": "b63f0et5y70mragfcrmezifh",
           "outgoingEdgeId": "wkecv7zg757mbsnbfdej6uph",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "d0bax1yf18x2bj5zt38vr6xs",
@@ -126,7 +126,7 @@
         },
         {
           "id": "r16g3avw7mwzi12srqisuex0",
-          "type": "Redirect",
+          "type": "redirect",
           "options": { "url": "https://google.com" }
         }
       ]

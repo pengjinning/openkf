@@ -71,7 +71,7 @@
         {
           "id": "uocaxxtg26btl2zytwy09jh9",
           "outgoingEdgeId": "rczh7k3r065okzax6za00lvh",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": { "placeholder": "Your first name" },
             "variableId": "vyu4paeim4jcjgmxr26bdk286"
@@ -103,7 +103,7 @@
         {
           "id": "nu9ibw4r4q9piwl3b308bezp",
           "groupId": "xaloto3qrrbtcdcrob013xcx",
-          "type": "email input",
+          "type": "email_input",
           "options": { "variableId": "vrhd0bug6b6dzgijevfoonvo2" },
           "outgoingEdgeId": "dxj0x2miwwkxsesp4chyjqek"
         }
@@ -168,7 +168,7 @@
         },
         {
           "id": "yxuk1bhfas07i4bxq64hi0vj",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "qn6w72jgckfz777e9ehb421v",
@@ -238,7 +238,7 @@
         {
           "id": "w53cmmn4iowq753r8jmvk7o7",
           "outgoingEdgeId": "qkrpdn1z0bv1xvsa3wrdyyn3",
-          "type": "Email",
+          "type": "email",
           "options": {
             "isCustomBody": true,
             "recipients": ["{{Email}}"],

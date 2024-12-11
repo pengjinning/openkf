@@ -138,7 +138,7 @@
         },
         {
           "id": "qrg1xtxxbmyo8a6mztma3dvr",
-          "type": "Jump",
+          "type": "jump",
           "options": {
             "groupId": "cl96ns9qr00043b6ii07bo25o",
             "blockId": "cl96nv877000b3b6i7p69ss2o"
@@ -236,7 +236,7 @@
         },
         {
           "id": "bkmgmgxa96k5261su12hv58k",
-          "type": "Jump",
+          "type": "jump",
           "options": {
             "groupId": "cl96ns9qr00043b6ii07bo25o",
             "blockId": "cl96nv877000b3b6i7p69ss2o"
@@ -298,7 +298,7 @@
         },
         {
           "id": "js5pbqj76g67yvs6wz99rcbm",
-          "type": "Jump",
+          "type": "jump",
           "options": {
             "groupId": "cl96ns9qr00043b6ii07bo25o",
             "blockId": "cl96nv877000b3b6i7p69ss2o"
@@ -323,7 +323,7 @@
         {
           "id": "cl96ogmjx001y3b6iwfosloet",
           "outgoingEdgeId": "cl96ohn9900213b6ibex8g6my",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your question..."
@@ -363,7 +363,7 @@
       "blocks": [
         {
           "id": "ifaxemnkm6ikjfv2ozzeg1o3",
-          "type": "Jump",
+          "type": "jump",
           "options": {
             "groupId": "cl96ns9qr00043b6ii07bo25o",
             "blockId": "cl96nv877000b3b6i7p69ss2o"

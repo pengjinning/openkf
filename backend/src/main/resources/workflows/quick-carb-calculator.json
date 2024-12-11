@@ -98,7 +98,7 @@
         {
           "id": "hcp2ebjsxmzjydpp6qkym5fo",
           "outgoingEdgeId": "pow7libu0danm0n84k5dvrh2",
-          "type": "text input",
+          "type": "text_input",
           "options": { "variableId": "vc5qxl1y2rzmy7uqeasq8bd3q" }
         }
       ]
@@ -125,7 +125,7 @@
         {
           "id": "je03xo9p9vipnvw07y859ng7",
           "outgoingEdgeId": "ee0zj9456t8oj1cbgn0d5pci",
-          "type": "text input",
+          "type": "text_input",
           "options": { "variableId": "veiz4m7fe9er6k5qy676qwhfb" }
         }
       ]
@@ -152,7 +152,7 @@
         {
           "id": "zxvlig3wytb4n7s81prfszau",
           "outgoingEdgeId": "r0sy9h8oux00p1pqkuczhg9n",
-          "type": "rating input",
+          "type": "rating_input",
           "options": {
             "variableId": "vprpht8foqzxv4bs8hlozqoq7",
             "length": 7,
@@ -195,7 +195,7 @@
         {
           "id": "peycxrwyv23d396c27j75nsy",
           "outgoingEdgeId": "bk3wsui0h91kbf9zobqh15pb",
-          "type": "Email",
+          "type": "email",
           "options": {
             "isCustomBody": true,
             "recipients": ["{{Email}}"],
@@ -245,7 +245,7 @@
         {
           "id": "prd6ni8tnjoi62tj29dnthlj",
           "outgoingEdgeId": "d7ihuksdgn0gdqm7138xnzf4",
-          "type": "email input",
+          "type": "email_input",
           "options": { "variableId": "vb0jqpcdbqr7c2fq1ijs7j3wt" }
         }
       ]
@@ -291,7 +291,7 @@
       "blocks": [
         {
           "id": "tukplu3km8f59cuqyrwhlnjz",
-          "type": "Redirect",
+          "type": "redirect",
           "options": {
             "url": "https://www.precisionhydration.com/eu/en/products/pf-30-gel/"
           }

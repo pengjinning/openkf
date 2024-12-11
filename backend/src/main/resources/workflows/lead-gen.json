@@ -86,7 +86,7 @@
         {
           "id": "snbsad18Bgry8yZ8DZCfdFD",
           "outgoingEdgeId": "w3MiN1Ct38jT5NykVsgmb5",
-          "type": "email input",
+          "type": "email_input",
           "options": {
             "variableId": "v3VFChNVSCXQ2rXv4DrJ8Ah"
           }
@@ -110,7 +110,7 @@
         {
           "id": "sqEsMo747LTDnY9FjQcEwUv",
           "outgoingEdgeId": "4tYbERpi5Po4goVgt6rWXg",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "giiLFGw5xXBCHzvp1qAbdX"
           }
@@ -181,7 +181,7 @@
         {
           "id": "sqFy2G3C1mh9p6s3QBdSS5x",
           "outgoingEdgeId": "sH5nUssG2XQbm6ZidGv9BY",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "isLong": true
           }

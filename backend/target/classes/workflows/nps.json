@@ -77,7 +77,7 @@
         },
         {
           "id": "bfvv74k8oz57kaqeqek3uen7",
-          "type": "rating input",
+          "type": "rating_input",
           "options": {
             "variableId": "vwqc8tzl0380h30vxh07fekmm",
             "labels": {
@@ -90,7 +90,7 @@
         {
           "id": "z76m5qjuy15sa6b0p1re0nkp",
           "outgoingEdgeId": "niec249stbfa2obm9mkd1pgw",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "xy6ni2aj5dxys27itzbtvdzw",
@@ -164,7 +164,7 @@
         {
           "id": "ro6a6dt7j3x99unduh5jm6an",
           "outgoingEdgeId": "y6gsa6pjrfeu8zi6evtzirs1",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "isLong": true
           }
@@ -199,7 +199,7 @@
         {
           "id": "vdythdfi91vr47ipbfalddc6",
           "outgoingEdgeId": "r74zv3gamsln3dbmp1gvxpa2",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcgkjbh8intf2cql1oteyj4mu",
             "expressionToEvaluate": "Promoter"
@@ -215,7 +215,7 @@
         {
           "id": "w40rjuv0avoetpdj6l5nbiz6",
           "outgoingEdgeId": "x62wj4inzidyj03ktiyu0g81",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcgkjbh8intf2cql1oteyj4mu",
             "expressionToEvaluate": "Neutral"
@@ -231,7 +231,7 @@
         {
           "id": "melr0p8nxssxe1qyat748uyy",
           "outgoingEdgeId": "q5xllqzy4x1q3tdvpr1piwgi",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcgkjbh8intf2cql1oteyj4mu",
             "expressionToEvaluate": "Detractor"
@@ -246,7 +246,7 @@
       "blocks": [
         {
           "id": "z4gsshsckqdu6m1umartgxgb",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "vd6ls562brvt5kld746ao63x",
@@ -426,7 +426,7 @@
     },
     {
       "id": "mwfu8ot0z37zfq2fbo5rcyrl",
-      "title": "Redirect Capterra",
+      "title": "redirect Capterra",
       "graphCoordinates": { "x": 2531.28515625, "y": 300.828125 },
       "blocks": [
         {
@@ -452,12 +452,12 @@
         },
         {
           "id": "xr1or6dcptogabyvv6zepmw8",
-          "type": "Wait",
+          "type": "wait",
           "options": { "secondsToWaitFor": "1" }
         },
         {
           "id": "bfyw1eabougkp2aqlrcrf6lz",
-          "type": "Redirect",
+          "type": "redirect",
           "options": {
             "url": "https://www.capterra.com/p/233968/Typebot/"
           }

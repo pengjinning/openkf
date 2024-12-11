@@ -251,7 +251,7 @@
       "blocks": [
         {
           "id": "kj2amicd12ep88qd7z5ry5py",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vig2qkffhfib01ptwfp5lxhgq",
             "type": "Transcript"
@@ -363,7 +363,7 @@
         {
           "id": "n8qrxik30fxrh9dxa3xu5yvf",
           "outgoingEdgeId": "d0qydik94v0dda73gkpsxsht",
-          "type": "text input",
+          "type": "text_input",
           "options": { "isLong": true }
         }
       ]
@@ -450,7 +450,7 @@
         {
           "id": "xwpzbigjxduvrno7e21f84wh",
           "outgoingEdgeId": "xv6njl5ywntcj5rob2kr116u",
-          "type": "email input",
+          "type": "email_input",
           "options": { "variableId": "k53o6d9neq13sujwfpfj6ohj" }
         }
       ]

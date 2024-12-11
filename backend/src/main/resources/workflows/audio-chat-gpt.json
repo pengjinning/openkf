@@ -18,7 +18,7 @@
       "blocks": [
         {
           "id": "ovgk70u0kfxrbtz9dy4e040o",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "vudksu3zyrat6s1bq6qne0rx3",
             "audioClip": {
@@ -29,7 +29,7 @@
         },
         {
           "id": "riqtiysqklu64fiw8f3sspx4",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "s2v8eax93tjvwlfrrt89a60c",
@@ -65,7 +65,7 @@
       "blocks": [
         {
           "id": "m4jadtknjb3za3gvxj1xdn1k",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vabkycu0qqff5d6ar2ama16pf",
             "type": "Append value(s)",
@@ -93,7 +93,7 @@
         },
         {
           "id": "yblc864bzipaqfja7b2o3oo0",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vabkycu0qqff5d6ar2ama16pf",
             "type": "Append value(s)",

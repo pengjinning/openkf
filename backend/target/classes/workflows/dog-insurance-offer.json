@@ -18,7 +18,7 @@
       "blocks": [
         {
           "id": "y0iukpry1i6h8sv22gz4ffsg",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "0"
@@ -143,7 +143,7 @@
       "blocks": [
         {
           "id": "meoptkjq8tupr3qkyqkpaxqq",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vhl1s7qoksnw7r8b1soocxwsd",
             "expressionToEvaluate": "he"
@@ -168,7 +168,7 @@
       "blocks": [
         {
           "id": "jyi9t11totyrw2jeohfhvfw1",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vhl1s7qoksnw7r8b1soocxwsd",
             "expressionToEvaluate": "she"
@@ -194,7 +194,7 @@
         {
           "id": "kxzi32ioxwqpdy9yy0ktoavu",
           "outgoingEdgeId": "g4do01p1scej1trqlbidbrw1",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "vgl2m65vej3cjwqvkawnpih2l"
           }
@@ -226,7 +226,7 @@
         },
         {
           "id": "y2fcko12ha5n9zjxickaakxt",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "vliolql8p4vo58pvsz7olf5w",
@@ -341,7 +341,7 @@
         {
           "id": "ouu081yxvf9raf522k08vr6g",
           "outgoingEdgeId": "bw2ddpla0a4qggv8b7et3m12",
-          "type": "email input",
+          "type": "email_input",
           "options": {
             "variableId": "vzhkagzjqqa0amfc78jekl2gz"
           }
@@ -356,7 +356,7 @@
         {
           "id": "cubvtqhhgvf6k9597von95bt",
           "outgoingEdgeId": "wtbthu0nu61a6qijaranccfw",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "{{Estimated price}} + 5"
@@ -372,7 +372,7 @@
         {
           "id": "ww4zmawu2jbvrykqwqq7fnh5",
           "outgoingEdgeId": "kuh8vfaq0nazrtpkif9pzrpu",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "{{Estimated price}} + 20"
@@ -388,7 +388,7 @@
         {
           "id": "gdujudl5bf90oayj6z96ghv8",
           "outgoingEdgeId": "dvaakgyx7rteqs23qxz8uqx8",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "{{Estimated price}} + 10"
@@ -404,7 +404,7 @@
         {
           "id": "sevhy7y6pkbss80rph5blunn",
           "outgoingEdgeId": "opipj5xi262umvn98kkga4tx",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "{{Estimated price}} + 25"
@@ -420,7 +420,7 @@
         {
           "id": "bw9d73ypbvc83ltqme9kwwzc",
           "outgoingEdgeId": "ozsoiu70hbqp5pqucstlnh3b",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vq61f8ykwadq1pj8389qf9h91",
             "expressionToEvaluate": "{{Estimated price}} + 55"

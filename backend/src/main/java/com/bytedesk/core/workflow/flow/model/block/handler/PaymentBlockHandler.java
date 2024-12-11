@@ -19,21 +19,21 @@ import java.util.Map;
 @Component
 public class PaymentBlockHandler implements BlockHandler {
     private final ObjectMapper objectMapper;
-    
+
     public PaymentBlockHandler(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
     @Override
     public String getType() {
-        return BlockType.PAYMENT.name();
+        return BlockType.PAYMENT_INPUT.name();
     }
 
     @Override
     public Map<String, Object> processBlock(Block block, Map<String, Object> context) {
         PaymentBlockOptions options = objectMapper.convertValue(block.getOptions(), PaymentBlockOptions.class);
         Map<String, Object> result = new HashMap<>(context);
-        
+
         try {
             switch (options.getProvider().toLowerCase()) {
                 case "stripe":
@@ -44,7 +44,7 @@ public class PaymentBlockHandler implements BlockHandler {
                     break;
                 default:
                     throw new UnsupportedOperationException(
-                        "Unsupported payment provider: " + options.getProvider());
+                            "Unsupported payment provider: " + options.getProvider());
             }
         } catch (Exception e) {
             log.error("Payment processing failed", e);
@@ -52,7 +52,7 @@ public class PaymentBlockHandler implements BlockHandler {
             result.put("success", false);
             result.put("message", options.getErrorMessage());
         }
-        
+
         return result;
     }
 
@@ -60,10 +60,10 @@ public class PaymentBlockHandler implements BlockHandler {
     public boolean validateOptions(Block block) {
         try {
             PaymentBlockOptions options = objectMapper.convertValue(block.getOptions(), PaymentBlockOptions.class);
-            return options.getProvider() != null && 
-                   options.getAmount() != null &&
-                   options.getCurrency() != null &&
-                   options.getCredentials() != null;
+            return options.getProvider() != null &&
+                    options.getAmount() != null &&
+                    options.getCurrency() != null &&
+                    options.getCredentials() != null;
         } catch (Exception e) {
             return false;
         }
@@ -71,36 +71,37 @@ public class PaymentBlockHandler implements BlockHandler {
 
     private void handleStripePayment(PaymentBlockOptions options, Map<String, Object> result) {
         // try {
-        //     Stripe.apiKey = options.getCredentials().get("secretKey");
-            
-        //     PaymentIntentCreateParams.Builder paramsBuilder = PaymentIntentCreateParams.builder()
-        //         .setAmount(options.getAmount().multiply(new BigDecimal(100)).longValue())
-        //         .setCurrency(options.getCurrency().toLowerCase())
-        //         .setDescription(options.getDescription())
-        //         .setAutomaticPaymentMethods(
-        //             PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
-        //                 .setEnabled(true)
-        //                 .build()
-        //         );
+        // Stripe.apiKey = options.getCredentials().get("secretKey");
 
-        //     if (options.getReturnUrl() != null) {
-        //         paramsBuilder.setReturnUrl(options.getReturnUrl());
-        //     }
+        // PaymentIntentCreateParams.Builder paramsBuilder =
+        // PaymentIntentCreateParams.builder()
+        // .setAmount(options.getAmount().multiply(new BigDecimal(100)).longValue())
+        // .setCurrency(options.getCurrency().toLowerCase())
+        // .setDescription(options.getDescription())
+        // .setAutomaticPaymentMethods(
+        // PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
+        // .setEnabled(true)
+        // .build()
+        // );
 
-        //     PaymentIntent paymentIntent = PaymentIntent.create(paramsBuilder.build());
-            
-        //     result.put("clientSecret", paymentIntent.getClientSecret());
-        //     result.put("paymentIntentId", paymentIntent.getId());
-        //     result.put("success", true);
-        //     result.put("message", options.getSuccessMessage());
-            
-        //     if (options.getVariableName() != null) {
-        //         result.put(options.getVariableName(), paymentIntent.getId());
-        //     }
-            
+        // if (options.getReturnUrl() != null) {
+        // paramsBuilder.setReturnUrl(options.getReturnUrl());
+        // }
+
+        // PaymentIntent paymentIntent = PaymentIntent.create(paramsBuilder.build());
+
+        // result.put("clientSecret", paymentIntent.getClientSecret());
+        // result.put("paymentIntentId", paymentIntent.getId());
+        // result.put("success", true);
+        // result.put("message", options.getSuccessMessage());
+
+        // if (options.getVariableName() != null) {
+        // result.put(options.getVariableName(), paymentIntent.getId());
+        // }
+
         // } catch (Exception e) {
-        //     log.error("Stripe payment failed", e);
-        //     throw new RuntimeException("Failed to create payment intent", e);
+        // log.error("Stripe payment failed", e);
+        // throw new RuntimeException("Failed to create payment intent", e);
         // }
     }
 
@@ -110,8 +111,9 @@ public class PaymentBlockHandler implements BlockHandler {
     }
 
     private String processTemplate(String template, Map<String, Object> context) {
-        if (template == null) return null;
-        
+        if (template == null)
+            return null;
+
         for (Map.Entry<String, Object> entry : context.entrySet()) {
             String placeholder = "{{" + entry.getKey() + "}}";
             if (template.contains(placeholder)) {
@@ -120,4 +122,4 @@ public class PaymentBlockHandler implements BlockHandler {
         }
         return template;
     }
-} 
+}

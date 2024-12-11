@@ -30,6 +30,7 @@ public class FlowController extends BaseRestController<FlowRequest> {
 
     private final FlowRestService flowService;
 
+    // http://localhost:8080/api/v1/flow/query/org
     @Override
     public ResponseEntity<?> queryByOrg(FlowRequest request) {
 

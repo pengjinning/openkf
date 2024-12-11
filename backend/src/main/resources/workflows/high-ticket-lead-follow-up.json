@@ -102,7 +102,7 @@
         },
         {
           "id": "aaxyzry2gknzkb3n1vy19vh3",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "vct90f8lq4uuyqupv6qco5jfq",
             "isLong": true
@@ -126,7 +126,7 @@
         },
         {
           "id": "r860fira9zqst6vw5c83buh1",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "fa4zr4att2d2p2uz98l7c9nj",
@@ -233,7 +233,7 @@
         },
         {
           "id": "az31puebiu8jqql6g6goigox",
-          "type": "text input",
+          "type": "text_input",
           "options": { "variableId": "vct90f8lq4uuyqupv6qco5jfq" }
         },
         {
@@ -254,7 +254,7 @@
         },
         {
           "id": "ptei3e0lcwfpo1q8umygnga8",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "t7k7vhajv1gxhthj5uike7eh",
@@ -359,7 +359,7 @@
         },
         {
           "id": "cfrzcq8ik59r2ch1rn0vkacn",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "vct90f8lq4uuyqupv6qco5jfq",
             "isLong": true

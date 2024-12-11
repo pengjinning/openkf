@@ -18,7 +18,7 @@
       "blocks": [
         {
           "id": "us3drnvz2uw6ws3spubulsqn",
-          "type": "text input",
+          "type": "text_input",
           "options": { "variableId": "vamyvpkzwn8v0713jkkcmj91j" }
         },
         {

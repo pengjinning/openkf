@@ -37,7 +37,7 @@
         {
           "id": "cl3u45f0n000a2e6gci2xgmph",
           "outgoingEdgeId": "cl3u45j0n000c2e6go4nnaavg",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": { "placeholder": "Type your name..." },
             "variableId": "vcl3u45hek000b2e6gkl05z1da"
@@ -206,7 +206,7 @@
         {
           "id": "cl3u4l2et000z2e6gjlmh45jp",
           "outgoingEdgeId": "dstr8midu9f0x6ylyet7dljw",
-          "type": "email input",
+          "type": "email_input",
           "options": {
             "variableId": "vcl3u4n1vk00162e6gs6x59o2k"
           }
@@ -246,7 +246,7 @@
         {
           "id": "cl3u4mjq900152e6grwyg90zt",
           "outgoingEdgeId": "cl3u4wynv001b2e6g6pxc7int",
-          "type": "payment input",
+          "type": "payment_input",
           "options": {
             "additionalInformation": {
               "name": "{{Name}}",
@@ -271,7 +271,7 @@
         },
         {
           "id": "cl3u4xcqc001c2e6g355vnigh",
-          "type": "Email",
+          "type": "email",
           "options": {
             "isCustomBody": true,
             "recipients": ["{{Email}}"],
@@ -346,7 +346,7 @@
                 "type": "p",
                 "children": [
                   {
-                    "text": "Once it's done, you can remove this group and connect the email input to the \"Payment\" group 🪄"
+                    "text": "Once it's done, you can remove this group and connect the email_input to the \"Payment\" group 🪄"
                   }
                 ]
               }

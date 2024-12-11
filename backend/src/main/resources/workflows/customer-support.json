@@ -80,7 +80,7 @@
         {
           "id": "s3LYyyYtjdQ88jkMMV5DSW7",
           "outgoingEdgeId": "cl1571jhh00022e6dk77f52wg",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Describe the bug..."
@@ -144,7 +144,7 @@
         },
         {
           "id": "j08qxg0h804rngfroedblt5f",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "vLUAPaxKwPF49iZhg4XZYa" }
         }
       ]
@@ -195,7 +195,7 @@
         {
           "id": "sjd4qACugMarB7gJC8nMhb3",
           "outgoingEdgeId": "cl1571ktd00032e6dyti22850",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "v51BcuecnB6kRU1tsttaGyR",
             "isLong": true
@@ -245,7 +245,7 @@
         },
         {
           "id": "igdnc34rcmiyamazghr8s708",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "vLUAPaxKwPF49iZhg4XZYa" }
         }
       ]
@@ -270,7 +270,7 @@
         {
           "id": "s5Fh7zHUw3j4zDM5xjzwsXB",
           "outgoingEdgeId": "cl1571xtc00042e6dcptam5jw",
-          "type": "email input",
+          "type": "email_input",
           "options": {
             "variableId": "t2k6cj3uYfNdJX13APA4b9"
           }

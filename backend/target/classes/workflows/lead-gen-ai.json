@@ -99,7 +99,7 @@
         {
           "id": "snbsad18Bgry8yZ8DZCfdFD",
           "outgoingEdgeId": "piew4sf9dpafiweghqvucmax",
-          "type": "email input",
+          "type": "email_input",
           "options": {
             "variableId": "v3VFChNVSCXQ2rXv4DrJ8Ah"
           }
@@ -126,7 +126,7 @@
         {
           "id": "sqEsMo747LTDnY9FjQcEwUv",
           "outgoingEdgeId": "wlzesf38jzeyf65i1aj6j517",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your answer...",
@@ -178,7 +178,7 @@
       "blocks": [
         {
           "id": "px8ciz2nu2frvdqjporqpg95",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "w1cg5txczy2qmn4kbh1eybkk",
@@ -198,7 +198,7 @@
         },
         {
           "id": "dc58mxvcstc2rdwnlg4yd2aa",
-          "type": "OpenAI",
+          "type": "openai",
           "options": {
             "task": "Create chat completion",
             "model": "gpt-3.5-turbo",
@@ -247,7 +247,7 @@
         },
         {
           "id": "vssvfz99ain77sc5w07ci5a1",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vi5ta5lktses2h6skf5ky2zs0",
             "type": "Append value(s)",
@@ -265,7 +265,7 @@
         },
         {
           "id": "sqFy2G3C1mh9p6s3QBdSS5x",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your answer...",
@@ -277,7 +277,7 @@
         {
           "id": "t8s54i11vfebpp5cbc7xukn5",
           "outgoingEdgeId": "buwcxt81dfrh6prteij8cvo8",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vi5ta5lktses2h6skf5ky2zs0",
             "type": "Append value(s)",

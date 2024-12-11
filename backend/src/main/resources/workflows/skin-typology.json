@@ -30,7 +30,7 @@
         },
         {
           "id": "auaiu25dafv33l0ybyydcfhi",
-          "type": "Typebot link",
+          "type": "typebot_link",
           "options": {
             "typebotId": "current",
             "groupId": "m7v9f7qpr94kgonkcidmc7c1"
@@ -39,7 +39,7 @@
         {
           "id": "zix9zhcgb3km57n5q36zl0ri",
           "outgoingEdgeId": "ytel1g0jmiasr5o5ouvnadm1",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vtyvtib894a8eeqgr21yb17tv",
             "type": "Append value(s)",
@@ -284,7 +284,7 @@
         },
         {
           "id": "as64u7dfdb2a5nvvx66du2z0",
-          "type": "Typebot link",
+          "type": "typebot_link",
           "options": {
             "typebotId": "current",
             "groupId": "m7v9f7qpr94kgonkcidmc7c1"
@@ -293,7 +293,7 @@
         {
           "id": "hkhswiz5jz67hsbee8nyupjo",
           "outgoingEdgeId": "k9iqgr93gy1j7y7wcau0796d",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vtyvtib894a8eeqgr21yb17tv",
             "type": "Append value(s)",
@@ -309,7 +309,7 @@
       "blocks": [
         {
           "id": "g3lu22vq7pxex5j44nc5vnwg",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vm8iu1iexkbk01ptkqnfwdva4",
             "expressionToEvaluate": "{{Sebum score}} + 1"
@@ -701,7 +701,7 @@
         },
         {
           "id": "iaoru5srzl2qq9u07la8oppi",
-          "type": "Typebot link",
+          "type": "typebot_link",
           "options": {
             "typebotId": "current",
             "groupId": "m7v9f7qpr94kgonkcidmc7c1"
@@ -710,7 +710,7 @@
         {
           "id": "q1vcfx4rofsof3uv9m8138uk",
           "outgoingEdgeId": "qlptft5rpnqxdrl5rn818apo",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vtyvtib894a8eeqgr21yb17tv",
             "type": "Append value(s)",
@@ -1152,7 +1152,7 @@
         {
           "id": "xc63yyy5eobay5msj26t4dpe",
           "outgoingEdgeId": "dwls95sfkvly3ykdsxu835u8",
-          "type": "email input",
+          "type": "email_input",
           "options": { "variableId": "vnzqkgmwlwlu7ut6jjelel53w" }
         }
       ]
@@ -1164,7 +1164,7 @@
       "blocks": [
         {
           "id": "heto2wo9f08d4ypr40hvrfww",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vwgpda1jav43mrn4cx2gxp0ym",
             "type": "Transcript"
@@ -1197,7 +1197,7 @@
         },
         {
           "id": "for2wo573unezh3a2ru5c43x",
-          "type": "Email",
+          "type": "email",
           "options": {
             "isCustomBody": true,
             "recipients": ["{{Email}}"],
@@ -1249,7 +1249,7 @@
       "blocks": [
         {
           "id": "nha5wj8a0czia8yd3qupm7zh",
-          "type": "Redirect",
+          "type": "redirect",
           "options": { "url": "https://global.typology.com/" }
         }
       ]

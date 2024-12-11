@@ -18,7 +18,7 @@
       "blocks": [
         {
           "id": "cl1r0bva2000y2e6d2g88vmjk",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcl1r0bxdj000z2e6d65u7n41b",
             "expressionToEvaluate": "0"
@@ -66,7 +66,7 @@
       "blocks": [
         {
           "id": "cl1r0e8gq00172e6dq0bpxqsc",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcl1r0bxdj000z2e6d65u7n41b",
             "expressionToEvaluate": "{{Score}} + 5"
@@ -123,7 +123,7 @@
       "blocks": [
         {
           "id": "cl1r0eril00192e6d9yrtownz",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcl1r0bxdj000z2e6d65u7n41b",
             "expressionToEvaluate": "{{Score}} + 5"
@@ -180,7 +180,7 @@
       "blocks": [
         {
           "id": "cl1r0j8u2001u2e6dgdpvrnz5",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcl1r0bxdj000z2e6d65u7n41b",
             "expressionToEvaluate": "{{Score}} + 5"
@@ -362,7 +362,7 @@
       "blocks": [
         {
           "id": "cl1r0lo97002n2e6dfx7fohju",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vcl1r0bxdj000z2e6d65u7n41b",
             "expressionToEvaluate": "{{Score}} + 5"
@@ -370,7 +370,7 @@
         },
         {
           "id": "cl1r0oqrr002y2e6dsg0sa64g",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "cl1r0oqrr002z2e6dl821aaow",
@@ -392,7 +392,7 @@
         {
           "id": "cl1r0qvwy00342e6d7ww0oqar",
           "outgoingEdgeId": "cl1r0sg9m003i2e6dbsc4cqjn",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "cl1r0qvwy00352e6dui5itgd1",
@@ -523,7 +523,7 @@
       "blocks": [
         {
           "id": "cl1r15f87005g2e6dp3srll8r",
-          "type": "Typebot link",
+          "type": "typebot_link",
           "options": {
             "typebotId": "current",
             "groupId": "cl1r09bc6000h2e6dqml18p4p",

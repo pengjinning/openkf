@@ -37,7 +37,7 @@
         {
           "id": "cl126820m000g2e6dfleq78bt",
           "outgoingEdgeId": "j6x356fbxo32zd9ezje77t4j",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "cl126f4hf000i2e6d8zvzc3t1"
           }
@@ -131,7 +131,7 @@
         {
           "id": "cl126jioz000v2e6dwrk1f2cb",
           "outgoingEdgeId": "c5qdoivxsbhu1mkxkmw9yxft",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type the company name..."
@@ -195,7 +195,7 @@
         {
           "id": "cl1278gyk002w2e6d744eb87n",
           "outgoingEdgeId": "zvr4qou4drmkvyyikya9y6ku",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "cl1278gyk002x2e6dwmpzs3nf",
@@ -269,7 +269,7 @@
         {
           "id": "cl126pv7n001o2e6dajltc4qz",
           "outgoingEdgeId": "vk0mgizwhw761s9eo9lx88yv",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "cl126q38p001q2e6d0hj23f6b"
           }

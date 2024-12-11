@@ -94,7 +94,7 @@
         },
         {
           "id": "kftq9x1wnrcefzc268ydmqkn",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",
@@ -159,7 +159,7 @@
         },
         {
           "id": "dyfigmu4095x8p99qe461zbh",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",
@@ -224,7 +224,7 @@
         },
         {
           "id": "usolgxcte60rin18ccygzbdu",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",
@@ -256,7 +256,7 @@
       "blocks": [
         {
           "id": "rzlhl61q6dmh8n93usvqgyij",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Empty"
@@ -300,51 +300,51 @@
     },
     {
       "id": "oemwa82xy3yt74gzilrojogl",
-      "title": "Jumps",
+      "title": "jumps",
       "graphCoordinates": { "x": 1431.381871940994, "y": 1083.626261828848 },
       "blocks": [
         {
           "id": "nnzp5mle206cl3nnqlkqjau1",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "irnu2zu8m2i4fu6485hxtra5" }
         },
         {
           "id": "nm6vp6ifbjq7mttohwhibjvj",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "u6nm47oyneidmsebszp60t0m" }
         }
       ]
     },
     {
       "id": "p1fh0e2y8sq4lhrskc4rb5z2",
-      "title": "Jumps",
+      "title": "jumps",
       "graphCoordinates": { "x": 1436.545931193238, "y": 679.7247165284323 },
       "blocks": [
         {
           "id": "kyuvkruakbxjvxwgtjqti3gc",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "h4mcrr5x6lvy1mz96k0ey3do" }
         },
         {
           "id": "vywm4h8yz87ew4gjy4l6nmm3",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "u6nm47oyneidmsebszp60t0m" }
         }
       ]
     },
     {
       "id": "ow2g8fv93xxrgpcabnx8uod8",
-      "title": "Jumps",
+      "title": "jumps",
       "graphCoordinates": { "x": 1419.568721793131, "y": 169.5335644029076 },
       "blocks": [
         {
           "id": "qxgl1cscs38pfwzaj4pqsd46",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "m84gejzvl08ky6ynruiuszpc" }
         },
         {
           "id": "m94q879l9yr1vx5xrbxlsj6q",
-          "type": "Jump",
+          "type": "jump",
           "options": { "groupId": "u6nm47oyneidmsebszp60t0m" }
         }
       ]
@@ -475,7 +475,7 @@
       "blocks": [
         {
           "id": "ovgk70u0kfxrbtz9dy4e040o",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your answer...",
@@ -488,7 +488,7 @@
         {
           "id": "nx6v1ogcp9x9o6regjopvff8",
           "outgoingEdgeId": "cplyootzgqo5jpmhntgz4shm",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",
@@ -504,7 +504,7 @@
       "blocks": [
         {
           "id": "emii43mtihiuy35gpp6b91d8",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your answer...",
@@ -517,7 +517,7 @@
         {
           "id": "h0cgmv6q61s3yhuq6u2pb5p0",
           "outgoingEdgeId": "za1pwdunrlwgfu1kz7dnsb3m",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",
@@ -533,7 +533,7 @@
       "blocks": [
         {
           "id": "e6rovxwxlizr54iy8nyi84pi",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "labels": {
               "placeholder": "Type your answer...",
@@ -546,7 +546,7 @@
         {
           "id": "b937909x86r3wzbn4mzxmw25",
           "outgoingEdgeId": "fz77htstfb4jig82k66pl0vt",
-          "type": "Set variable",
+          "type": "set_variable",
           "options": {
             "variableId": "vu9adij5penetej2xz89htfe6",
             "type": "Append value(s)",

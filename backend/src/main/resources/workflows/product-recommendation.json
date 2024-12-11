@@ -97,7 +97,7 @@
         {
           "id": "xobx3g928f9zj220n5qe1ih6",
           "outgoingEdgeId": "gnh6uloe0a8ciwahgq0gnx4k",
-          "type": "text input",
+          "type": "text_input",
           "options": {
             "variableId": "vp1r2yrb6xgmi2aq3x6x73vaz"
           }
@@ -121,7 +121,7 @@
         {
           "id": "zesp4ro7ltjmh64sn8d4912c",
           "outgoingEdgeId": "hwbbi48q0u8xnlqbpq53cdju",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "l4y5s4rz63g3kl91sq5h6401",
@@ -205,7 +205,7 @@
         {
           "id": "cx2v8nfb4kxvk58bbu6w85uy",
           "outgoingEdgeId": "drxu7gyz2trqjtv5nnfv1x9l",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "fmhwukhd2112743tgrmv85st",
@@ -403,7 +403,7 @@
         {
           "id": "vdzzxwdocfxdvqnqwwvjymzw",
           "outgoingEdgeId": "vnqu52ld3usezpnrgu2l7ul0",
-          "type": "email input"
+          "type": "email_input"
         }
       ]
     },
@@ -415,7 +415,7 @@
         {
           "id": "l16y2qzslakgl2up4jybj5m4",
           "outgoingEdgeId": "j6d1kch478t4ov4bbz1yshhl",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "yffl8ja17g5fr9rpi4d0cl36",
@@ -489,7 +489,7 @@
         {
           "id": "okl6akklm8djknl7lofqr3cm",
           "outgoingEdgeId": "xblzklrcdkmxeu8y5xbicz09",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "vyjgfexvyrijez06kpxi1mva",
@@ -517,7 +517,7 @@
         {
           "id": "styhci2fh3yi17b7cmv3x8cc",
           "outgoingEdgeId": "dyvib6xwm0jieqp37mac1diq",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "okd2sbmr1mgoubpf7kdjr9ey",
@@ -544,7 +544,7 @@
       "blocks": [
         {
           "id": "m8o93n92t5wcy5bi8tgauc5f",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "yw3cil1rvf3iduc0mko0c8og",
@@ -603,7 +603,7 @@
         {
           "id": "zzws62fe3zha7x7kln3kp0ko",
           "outgoingEdgeId": "pk7d58d6qmxrylte434czz4x",
-          "type": "Condition",
+          "type": "condition",
           "items": [
             {
               "id": "kb6eovh6di5xqnkegms0ljee",
@@ -692,7 +692,7 @@
         {
           "id": "ph2jgb8r0lyui0j6v3jtifo2",
           "outgoingEdgeId": "l8g4gblcmzmiv4fsgjufviws",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "pkv4omwvnr338lkhwh6jglh6",
@@ -767,7 +767,7 @@
         },
         {
           "id": "mtj2j6zgnp50wpw9ewuwui5u",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "s9nop23fmq55jilo9mntgpn8",
@@ -831,7 +831,7 @@
         {
           "id": "np8236cce7e79h8i21hg5ncp",
           "outgoingEdgeId": "u57y4cl6042u5r34dahfhwus",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "smabu9g31qcovytdu2yyi86n",
@@ -860,7 +860,7 @@
         {
           "id": "r5hq4sr8iovxqyixejparma7",
           "outgoingEdgeId": "xevaekw7nv6zfmkijsortgk5",
-          "type": "picture choice input",
+          "type": "picture_choice_input",
           "items": [
             {
               "id": "zc1c5ahukxhalbu9p6oqz4tw",
