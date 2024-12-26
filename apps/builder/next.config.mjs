@@ -42,8 +42,8 @@ const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "fr", "pt", "pt-BR", "de", "ro", "es", "it", "el"],
+    defaultLocale: 'zh-cn',
+    locales: ['en', 'fr', 'pt', 'pt-BR', 'de', 'ro', 'es', 'it', 'el', 'zh-cn', 'zh-tw'],
   },
   experimental: {
     outputFileTracingRoot: join(__dirname, "../../"),

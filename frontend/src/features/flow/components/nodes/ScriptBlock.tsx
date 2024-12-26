@@ -1,28 +1,19 @@
 import { FC } from 'react'
-import { NodeProps } from 'reactflow'
-import { Box, Stack, Text, Code } from '@/components/ui'
-import { Block } from '@/types/flow'
-import { BaseNode } from './BaseNode'
+import { Handle, Position } from 'reactflow'
+import { Box, Text } from '@/components/ui'
 
-export const ScriptBlock: FC<NodeProps<Block>> = ({ data, ...props }) => {
+interface ScriptBlockProps {
+  data: {
+    label?: string;
+  };
+}
+
+export const ScriptBlock: FC<ScriptBlockProps> = ({ data }) => {
   return (
-    <BaseNode type="script" data={data} {...props}>
-      <Box p={3}>
-        <Stack spacing={2}>
-          <Text fontSize="sm" color="gray.500">
-            Script
-          </Text>
-          <Code
-            p={2}
-            borderRadius="md"
-            bg="gray.50"
-            fontSize="sm"
-            whiteSpace="pre-wrap"
-          >
-            {data.code || '// No script'}
-          </Code>
-        </Stack>
-      </Box>
-    </BaseNode>
-  )
+    <Box bg="white" p={3} borderRadius="md" shadow="sm">
+      <Handle type="target" position={Position.Left} />
+      <Text>{data.label || '脚本'}</Text>
+      <Handle type="source" position={Position.Right} />
+    </Box>
+  );
 } 

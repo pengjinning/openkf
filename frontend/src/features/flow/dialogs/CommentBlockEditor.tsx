@@ -62,8 +62,6 @@ export const CommentBlockEditor: FC<CommentBlockEditorProps> = ({ block, ...prop
             <option value="yellow">Yellow</option>
             <option value="red">Red</option>
             <option value="purple">Purple</option>
-            <option value="cyan">Cyan</option>
-            <option value="pink">Pink</option>
           </Select>
         </Stack>
 

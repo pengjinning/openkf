@@ -1,3 +1,17 @@
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-12-09 21:24:04
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-12-14 15:13:33
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM –
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license.
+ *  仅支持企业内部员工自用，严禁私自用于销售、二次销售或者部署SaaS方式销售
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE
+ *  contact: 270580156@qq.com
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved.
+ */
 import { Seo } from "@/components/Seo";
 import { Graph } from "@/features/graph/components/Graph";
 import { EventsCoordinatesProvider } from "@/features/graph/providers/EventsCoordinateProvider";
@@ -25,7 +39,7 @@ export const EditorPage = () => {
   const { workspace } = useWorkspace();
   const backgroundImage = useColorModeValue(
     "radial-gradient(#c6d0e1 1px, transparent 0)",
-    "radial-gradient(#2f2f39 1px, transparent 0)",
+    "radial-gradient(#2f2f39 1px, transparent 0)"
   );
   const bgColor = useColorModeValue("#f4f5f8", "gray.850");
 
@@ -35,7 +49,7 @@ export const EditorPage = () => {
 
   return (
     <EditorProvider>
-      <Seo title={typebot?.name ? `${typebot.name} | Editor` : "Editor"} />
+      {/* <Seo title={typebot?.name ? `${typebot.name} | Editor` : "Editor"} /> */}
       <Flex overflow="clip" h="100vh" flexDir="column" id="editor-container">
         <VideoOnboardingFloatingWindow type="editor" />
         {isSuspicious && <SuspectedTypebotBanner typebotId={typebot.id} />}

@@ -1,3 +1,17 @@
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-12-10 14:06:18
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-12-11 15:24:52
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
+ *  仅支持企业内部员工自用，严禁私自用于销售、二次销售或者部署SaaS方式销售 
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE 
+ *  contact: 270580156@qq.com 
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved. 
+ */
 import { XYPosition } from 'reactflow'
 
 interface GridConfig {
@@ -6,87 +20,39 @@ interface GridConfig {
   enabled: boolean
 }
 
-export const snapToGrid = (
-  position: XYPosition,
-  config: GridConfig = { gridSize: 20, snapThreshold: 10, enabled: true }
-): XYPosition => {
-  if (!config.enabled) return position
+export const GRID_SIZE = 20
 
-  const { gridSize, snapThreshold } = config
+export const snapToGrid = (position: { x: number; y: number }) => ({
+  x: Math.round(position.x / GRID_SIZE) * GRID_SIZE,
+  y: Math.round(position.y / GRID_SIZE) * GRID_SIZE,
+})
 
-  const snapToGridLine = (value: number): number => {
-    const remainder = value % gridSize
-    const shouldSnap = Math.abs(remainder) < snapThreshold
+export const alignToCenter = (position: { x: number; y: number }) => ({
+  x: Math.round((window.innerWidth - 250) / 2),
+  y: position.y,
+})
 
-    if (shouldSnap) {
-      return value - remainder
-    }
+export const alignToLeft = (position: { x: number; y: number }) => ({
+  x: 100,
+  y: position.y,
+})
 
-    const shouldSnapToNext = Math.abs(remainder - gridSize) < snapThreshold
-    if (shouldSnapToNext) {
-      return value + (gridSize - remainder)
-    }
+export const alignToRight = (position: { x: number; y: number }) => ({
+  x: window.innerWidth - 350,
+  y: position.y,
+})
 
-    return value
-  }
+export const alignToTop = (position: { x: number; y: number }) => ({
+  x: position.x,
+  y: 100,
+})
 
-  return {
-    x: snapToGridLine(position.x),
-    y: snapToGridLine(position.y)
-  }
-}
+export const alignToMiddle = (position: { x: number; y: number }) => ({
+  x: position.x,
+  y: Math.round(window.innerHeight / 2) - 100,
+})
 
-export const renderGrid = (config: GridConfig) => {
-  if (!config.enabled) return null
-
-  const { gridSize } = config
-  const width = 2000
-  const height = 2000
-
-  const horizontalLines = []
-  const verticalLines = []
-
-  for (let i = 0; i < width; i += gridSize) {
-    verticalLines.push(
-      <line
-        key={`v-${i}`}
-        x1={i}
-        y1={0}
-        x2={i}
-        y2={height}
-        stroke="#e2e8f0"
-        strokeWidth={1}
-      />
-    )
-  }
-
-  for (let i = 0; i < height; i += gridSize) {
-    horizontalLines.push(
-      <line
-        key={`h-${i}`}
-        x1={0}
-        y1={i}
-        x2={width}
-        y2={i}
-        stroke="#e2e8f0"
-        strokeWidth={1}
-      />
-    )
-  }
-
-  return (
-    <svg
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none'
-      }}
-    >
-      {verticalLines}
-      {horizontalLines}
-    </svg>
-  )
-} 
+export const alignToBottom = (position: { x: number; y: number }) => ({
+  x: position.x,
+  y: window.innerHeight - 200,
+}) 

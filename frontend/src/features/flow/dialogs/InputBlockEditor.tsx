@@ -43,11 +43,11 @@ export const InputBlockEditor: FC<InputBlockEditorProps> = ({ block, ...props })
             aria-labelledby="input-type-label"
             title="Select input type"
           >
-            <option value="text">Text</option>
-            <option value="number">Number</option>
-            <option value="email">Email</option>
-            <option value="phone">Phone</option>
-            <option value="url">URL</option>
+            <option value="text">文本</option>
+            <option value="number">数字</option>
+            <option value="email">邮箱</option>
+            <option value="url">网址</option>
+            <option value="tel">电话</option>
           </Select>
         </Stack>
 

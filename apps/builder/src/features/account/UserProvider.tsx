@@ -68,22 +68,22 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (!router.isReady) return;
     if (status === "loading") return;
-    const isSignInPath = [
-      "/signin",
-      "/register",
-      "/signin/email-redirect",
-    ].includes(router.pathname);
-    const isPathPublicFriendly = /\/typebots\/.+\/(edit|theme|settings)/.test(
-      router.pathname,
-    );
-    if (isSignInPath || isPathPublicFriendly) return;
-    if (!user && status === "unauthenticated")
-      router.replace({
-        pathname: "/signin",
-        query: {
-          redirectPath: router.asPath,
-        },
-      });
+    // const isSignInPath = [
+    //   "/signin",
+    //   "/register",
+    //   "/signin/email-redirect",
+    // ].includes(router.pathname);
+    // const isPathPublicFriendly = /\/typebots\/.+\/(edit|theme|settings)/.test(
+    //   router.pathname,
+    // );
+    // if (isSignInPath || isPathPublicFriendly) return;
+    // if (!user && status === "unauthenticated")
+    //   router.replace({
+    //     pathname: "/signin",
+    //     query: {
+    //       redirectPath: router.asPath,
+    //     },
+    //   });
   }, [router, status, user]);
 
   const updateUser = (updates: Partial<User>) => {

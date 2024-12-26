@@ -1,50 +1,23 @@
-import axios from 'axios'
 import { Flow } from '@/types/flow'
-import { request } from '@/utils/request';
+import { axios } from './axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+export const flowApi = {
+  getFlow: async (flowId: string): Promise<Flow> => {
+    const { data } = await axios.get(`/api/flows/${flowId}`)
+    return data
+  },
 
-export const exportFlow = async (id: string): Promise<Blob> => {
-  const { data } = await axios.get(`${API_BASE_URL}/api/flows/${id}/export`, {
-    responseType: 'blob'
-  })
-  return data
+  createFlow: async (flow: Partial<Flow>): Promise<Flow> => {
+    const { data } = await axios.post('/api/flows', flow)
+    return data
+  },
+
+  updateFlow: async (flowId: string, updates: Partial<Flow>): Promise<Flow> => {
+    const { data } = await axios.patch(`/api/flows/${flowId}`, updates)
+    return data
+  },
+
+  deleteFlow: async (flowId: string): Promise<void> => {
+    await axios.delete(`/api/flows/${flowId}`)
+  },
 }
-
-export const importFlow = async (file: File): Promise<Flow> => {
-  const formData = new FormData()
-  formData.append('file', file)
-  const { data } = await axios.post(`${API_BASE_URL}/api/flows/import`, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  })
-  return data
-}
-
-export const duplicateFlow = async (id: string): Promise<Flow> => {
-  const { data } = await axios.post(`${API_BASE_URL}/api/flows/${id}/duplicate`)
-  return data
-}
-
-export const getFlowVersions = async (id: string): Promise<Flow[]> => {
-  const { data } = await axios.get(`${API_BASE_URL}/api/flows/${id}/versions`)
-  return data
-}
-
-export const restoreFlowVersion = async (id: string, versionId: string): Promise<Flow> => {
-  const { data } = await axios.post(`${API_BASE_URL}/api/flows/${id}/versions/${versionId}/restore`)
-  return data
-}
-
-export const getFlowsByOrg = () => {
-  return request({
-    url: '/api/v1/flow/query/org',
-    method: 'post',
-    data: {
-      page: 0,
-      size: 20,
-      sort: 'createdAt,desc'
-    }
-  });
-}; 

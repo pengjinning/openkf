@@ -49,3 +49,5 @@ export { ZoomFitIcon } from './ZoomFitIcon'
 export { GridIcon } from './GridIcon'
 export { ExpandIcon } from './ExpandIcon'
 export { CollapseIcon } from './CollapseIcon'
+export * from './CreateIcon';
+export * from './TemplateIcon';

@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 15:34:16
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-10 17:03:17
+ * @LastEditTime: 2024-12-11 15:19:46
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM –
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license.
@@ -13,23 +13,23 @@
  * Copyright (c) 2024 by bytedesk.com, All Rights Reserved.
  */
 import { createBrowserRouter } from "react-router-dom";
-import { BaseLayout } from "@/layouts/BaseLayout";
-import { OnboardingPage } from "@/features/onboarding/OnboardingPage";
-import { DashboardPage } from "@/features/dashboard/DashboardPage";
+import { Layout } from "@/components/Layout";
+import { FlowEditor } from "@/features/flow/FlowEditor";
+import { FlowCreatePage } from "@/features/flow/FlowCreatePage";
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <BaseLayout />,
+      element: <Layout />,
       children: [
         {
-          index: true,
-          element: <DashboardPage />,
+          path: "flows/create",
+          element: <FlowCreatePage />,
         },
         {
-          path: "onboarding",
-          element: <OnboardingPage />,
+          path: "flows/:flowId",
+          element: <FlowEditor />,
         },
       ],
     },

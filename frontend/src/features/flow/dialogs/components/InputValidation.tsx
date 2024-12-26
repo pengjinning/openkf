@@ -28,7 +28,7 @@ export const InputValidation: FC<InputValidationProps> = ({ validation = {}, onC
         label="Validation Type"
         value={validation.type || 'text'}
         onChange={e => handleChange('type', e.target.value)}
-        aria-label="Select input validation type"
+        aria-label="Select validation type"
         title="Select validation type"
       >
         <option value="text">Text</option>

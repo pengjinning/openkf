@@ -17,25 +17,7 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    {
-      name: 'history-fallback',
-      configureServer(server) {
-        return () => {
-          server.middlewares.use((req, res, next) => {
-            if (req.url!.includes('.')) {
-              next()
-            } else {
-              req.url = '/index.html'
-              next()
-            }
-          })
-        }
-      }
-    }
-  ],
-  base: '/',
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -43,12 +25,13 @@ export default defineConfig({
   },
   server: {
     port: 9012,
-    host: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
-      },
-    },
+        secure: false,
+        ws: true,
+      }
+    }
   },
 }) 

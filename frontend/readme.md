@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-10 13:03:57
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-10 14:27:55
+ * @LastEditTime: 2024-12-11 17:05:53
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -15,12 +15,4 @@
 
 # 前端项目
 
-## 项目结构
-
-## 项目依赖
-
-## 项目启动
-
-## 项目打包
-
-## 项目部署
+继续。请直接迁移typebot.io中流程编辑代码，替换掉nextjs相关实现，请尽量使用react + vite + antd框架来实现，直接迁移chakra-ui框架代码

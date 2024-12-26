@@ -60,6 +60,8 @@ export const FlowDebugger: FC<FlowDebuggerProps> = ({ flow, onClose }) => {
               onChange={e => setFilter(e.target.value as any)}
               width="120px"
               size="sm"
+              aria-label="Filter log types"
+              title="Select log type filter"
             >
               <option value="all">全部</option>
               <option value="info">信息</option>

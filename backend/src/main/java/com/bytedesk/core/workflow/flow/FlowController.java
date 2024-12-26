@@ -24,8 +24,12 @@ import com.bytedesk.core.base.BaseRestController;
 import com.bytedesk.core.utils.JsonResult;
 
 @RestController
-@RequestMapping("/api/v1/flow")
+@RequestMapping("/api/flow")
 @RequiredArgsConstructor
+@CrossOrigin(
+    origins = {"http://localhost:9012", "http://localhost:5173"}, 
+    allowCredentials = "true"
+)
 public class FlowController extends BaseRestController<FlowRequest> {
 
     private final FlowRestService flowService;

@@ -1,38 +1,84 @@
-import { Node, Edge } from 'reactflow'
+import type { Edge as ReactFlowEdge } from 'reactflow'
 
 export interface Flow {
   id: string
   name: string
   description?: string
-  blocks: Block[]
-  edges: Edge[]
-  createdAt: string
-  updatedAt: string
-  version?: number
-  isPublished?: boolean
+  groups: Group[]
+  edges: FlowEdge[]
+  variables: Variable[]
   settings?: FlowSettings
 }
 
-export interface Block extends Node {
-  type: string
-  data: {
-    label?: string
-    content?: string
-    variable?: string
-    [key: string]: any
-  }
+export interface Group {
+  id: string
+  title: string
+  graphCoordinates: { x: number; y: number }
+  blocks: Block[]
+}
+
+export interface Block {
+  id: string
+  type: BlockType
+  content?: BlockContent
+  options?: BlockOptions
+}
+
+export interface FlowEdge extends Omit<ReactFlowEdge, 'id'> {
+  id: string
+  from: { blockId: string }
+  to: { blockId: string }
+}
+
+export interface Variable {
+  id: string
+  name: string
+  value?: string
 }
 
 export interface FlowSettings {
-  typingEmulation?: {
-    enabled: boolean
-    speed: number
-    delay: number
-  }
-  security?: {
-    recaptcha?: {
-      enabled: boolean
-      siteKey?: string
+  theme?: {
+    chat?: {
+      hostBubbles?: {
+        backgroundColor?: string
+        color?: string
+      }
     }
   }
-} 
+}
+
+export type BlockType =
+  // Bubbles
+  | 'text'
+  | 'image'
+  | 'video'
+  | 'audio'
+  | 'embed'
+  // Inputs
+  | 'text_input'
+  | 'number'
+  | 'email'
+  | 'website'
+  | 'date'
+  | 'phone'
+  | 'choice'
+  | 'file'
+  | 'payment'
+  | 'rating'
+  // Logic
+  | 'set_variable'
+  | 'condition'
+  | 'redirect'
+  | 'script'
+
+export interface BlockContent {
+  text?: string
+  url?: string
+  placeholder?: string
+  options?: string[]
+}
+
+export interface BlockOptions {
+  variableId?: string
+  buttonLabel?: string
+}

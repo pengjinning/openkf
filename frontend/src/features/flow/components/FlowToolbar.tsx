@@ -1,272 +1,201 @@
 import { FC } from 'react'
-import { 
-  Stack, 
-  IconButton, 
-  Button, 
-  Divider,
+import {
+  Box,
+  HStack,
+  IconButton,
+  Button,
   Tooltip,
+  Divider,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  useDisclosure
-} from '@/components/ui'
+} from '@chakra-ui/react'
 import {
-  UndoIcon,
-  RedoIcon,
-  SaveIcon,
-  PlayIcon,
-  DownloadIcon,
-  UploadIcon,
+  RepeatIcon,
+  RepeatClockIcon,
+  CheckIcon,
+  AddIcon,
+  MinusIcon,
+  ViewIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
   DeleteIcon,
-  ZoomInIcon,
-  ZoomOutIcon,
-  ZoomFitIcon,
-  AlignLeftIcon,
-  AlignCenterIcon,
-  AlignRightIcon,
-  AlignTopIcon,
-  AlignMiddleIcon,
-  AlignBottomIcon,
-  GridIcon,
-  SearchIcon
-} from '@/components/icons'
+  ExternalLinkIcon,
+} from '@chakra-ui/icons'
 import { Flow } from '@/types/flow'
-import { useReactFlow } from 'reactflow'
-import { FlowExportDialog } from '../dialogs/FlowExportDialog'
-import { FlowImportDialog } from '../dialogs/FlowImportDialog'
-import { FlowSearch } from './FlowSearch'
+import { useFlowStore } from '../store/flowStore'
 
 interface FlowToolbarProps {
   flow: Flow
-  onSave?: () => void
-  onUndo?: () => void
-  onRedo?: () => void
-  onPreview?: () => void
-  onDelete?: () => void
-  canUndo?: boolean
-  canRedo?: boolean
-  isDirty?: boolean
-  selectedNodes?: string[]
-  onAlignNodes?: (direction: 'left' | 'center' | 'right' | 'top' | 'middle' | 'bottom') => void
-  onToggleGrid?: () => void
-  showGrid?: boolean
+  onSave: () => void
 }
 
-export const FlowToolbar: FC<FlowToolbarProps> = ({
-  flow,
-  onSave,
-  onUndo,
-  onRedo,
-  onPreview,
-  onDelete,
-  canUndo = false,
-  canRedo = false,
-  isDirty = false,
-  selectedNodes = [],
-  onAlignNodes,
-  onToggleGrid,
-  showGrid
-}) => {
-  const { zoomIn, zoomOut, fitView } = useReactFlow()
-  const exportDialog = useDisclosure()
-  const importDialog = useDisclosure()
-  const searchDialog = useDisclosure()
+export const FlowToolbar: FC<FlowToolbarProps> = ({ flow, onSave }) => {
+  const selectedBlockId = useFlowStore((state) => state.selectedBlockId)
+  const updateGroup = useFlowStore((state) => state.updateGroup)
+  const undo = useFlowStore((state) => state.undo)
+  const redo = useFlowStore((state) => state.redo)
 
-  const hasSelectedNodes = selectedNodes.length > 1
+  const handleAlignBlocks = (alignment: string) => {
+    if (!selectedBlockId || !flow) return
+
+    const selectedGroup = flow.groups.find(g => 
+      g.blocks.some(b => b.id === selectedBlockId)
+    )
+    if (!selectedGroup) return
+
+    let newCoordinates = { ...selectedGroup.graphCoordinates }
+    
+    switch (alignment) {
+      case 'left':
+        newCoordinates.x = 100
+        break
+      case 'center':
+        newCoordinates.x = window.innerWidth / 2 - 125
+        break
+      case 'right':
+        newCoordinates.x = window.innerWidth - 350
+        break
+      case 'top':
+        newCoordinates.y = 100
+        break
+      case 'middle':
+        newCoordinates.y = window.innerHeight / 2 - 100
+        break
+      case 'bottom':
+        newCoordinates.y = window.innerHeight - 200
+        break
+    }
+
+    updateGroup(selectedGroup.id, { graphCoordinates: newCoordinates })
+  }
 
   return (
-    <>
-      <Stack
-        direction="row"
-        align="center"
-        spacing={2}
-        p={2}
-        bg="white"
-        borderBottomWidth={1}
-        borderColor="gray.200"
-      >
-        {/* 历史操作 */}
-        <Stack direction="row" spacing={1}>
-          <Tooltip label="撤销 (Ctrl+Z)" placement="bottom">
+    <Box px={4} py={2} borderBottomWidth={1} bg="white">
+      <HStack spacing={4}>
+        {/* History */}
+        <HStack spacing={2}>
+          <Tooltip label="Undo (Ctrl+Z)">
             <IconButton
-              icon={<UndoIcon />}
-              onClick={onUndo}
-              isDisabled={!canUndo}
+              icon={<RepeatIcon />}
               aria-label="Undo"
+              size="sm"
+              variant="ghost"
+              onClick={undo}
             />
           </Tooltip>
-          <Tooltip label="重做 (Ctrl+Y)" placement="bottom">
+          <Tooltip label="Redo (Ctrl+Shift+Z)">
             <IconButton
-              icon={<RedoIcon />}
-              onClick={onRedo}
-              isDisabled={!canRedo}
+              icon={<RepeatClockIcon />}
               aria-label="Redo"
+              size="sm"
+              variant="ghost"
+              onClick={redo}
             />
           </Tooltip>
-        </Stack>
+        </HStack>
 
         <Divider orientation="vertical" h="24px" />
 
-        {/* 视图控制 */}
-        <Stack direction="row" spacing={1}>
-          <Tooltip label="放大 (Ctrl++)" placement="bottom">
+        {/* Zoom */}
+        <HStack spacing={2}>
+          <Tooltip label="Zoom in">
             <IconButton
-              icon={<ZoomInIcon />}
-              onClick={() => zoomIn()}
+              icon={<AddIcon />}
               aria-label="Zoom in"
+              size="sm"
+              variant="ghost"
             />
           </Tooltip>
-          <Tooltip label="缩小 (Ctrl+-)" placement="bottom">
+          <Tooltip label="Zoom out">
             <IconButton
-              icon={<ZoomOutIcon />}
-              onClick={() => zoomOut()}
+              icon={<MinusIcon />}
               aria-label="Zoom out"
+              size="sm"
+              variant="ghost"
             />
           </Tooltip>
-          <Tooltip label="适应视图 (Ctrl+0)" placement="bottom">
+          <Tooltip label="Fit view">
             <IconButton
-              icon={<ZoomFitIcon />}
-              onClick={() => fitView()}
+              icon={<ViewIcon />}
               aria-label="Fit view"
+              size="sm"
+              variant="ghost"
             />
           </Tooltip>
-        </Stack>
+        </HStack>
 
         <Divider orientation="vertical" h="24px" />
 
-        {/* 对齐工具 */}
-        {hasSelectedNodes && onAlignNodes && (
-          <Menu>
-            <MenuButton as={Button} variant="ghost" size="sm">
-              对齐
-            </MenuButton>
-            <MenuList>
-              <MenuItem icon={<AlignLeftIcon />} onClick={() => onAlignNodes('left')}>
-                左对齐
-              </MenuItem>
-              <MenuItem icon={<AlignCenterIcon />} onClick={() => onAlignNodes('center')}>
-                水平居中
-              </MenuItem>
-              <MenuItem icon={<AlignRightIcon />} onClick={() => onAlignNodes('right')}>
-                右对齐
-              </MenuItem>
-              <Divider />
-              <MenuItem icon={<AlignTopIcon />} onClick={() => onAlignNodes('top')}>
-                顶部对齐
-              </MenuItem>
-              <MenuItem icon={<AlignMiddleIcon />} onClick={() => onAlignNodes('middle')}>
-                垂直居中
-              </MenuItem>
-              <MenuItem icon={<AlignBottomIcon />} onClick={() => onAlignNodes('bottom')}>
-                底部对齐
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        )}
-
-        {/* 网格控制 */}
-        {onToggleGrid && (
-          <Tooltip label={showGrid ? '隐藏网格' : '显示网格'} placement="bottom">
-            <IconButton
-              icon={<GridIcon />}
-              onClick={onToggleGrid}
-              aria-label={showGrid ? 'Hide grid' : 'Show grid'}
-              variant={showGrid ? 'solid' : 'ghost'}
-            />
-          </Tooltip>
-        )}
-
-        {/* 搜索 */}
-        <Tooltip label="搜索节点 (Ctrl+F)" placement="bottom">
-          <IconButton
-            icon={<SearchIcon />}
-            onClick={searchDialog.onOpen}
-            aria-label="Search"
-          />
-        </Tooltip>
+        {/* Alignment */}
+        <Menu>
+          <MenuButton
+            as={Button}
+            size="sm"
+            variant="ghost"
+            leftIcon={<ArrowDownIcon />}
+          >
+            Align
+          </MenuButton>
+          <MenuList>
+            <MenuItem icon={<ChevronLeftIcon />} onClick={() => handleAlignBlocks('left')}>
+              Left
+            </MenuItem>
+            <MenuItem icon={<ArrowDownIcon />} onClick={() => handleAlignBlocks('center')}>
+              Center
+            </MenuItem>
+            <MenuItem icon={<ChevronRightIcon />} onClick={() => handleAlignBlocks('right')}>
+              Right
+            </MenuItem>
+            <MenuItem icon={<ChevronUpIcon />} onClick={() => handleAlignBlocks('top')}>
+              Top
+            </MenuItem>
+            <MenuItem icon={<ArrowUpIcon />} onClick={() => handleAlignBlocks('middle')}>
+              Middle
+            </MenuItem>
+            <MenuItem icon={<ChevronDownIcon />} onClick={() => handleAlignBlocks('bottom')}>
+              Bottom
+            </MenuItem>
+          </MenuList>
+        </Menu>
 
         <Divider orientation="vertical" h="24px" />
 
-        {/* 主要操作 */}
-        <Stack direction="row" spacing={1}>
-          <Tooltip label="保存 (Ctrl+S)" placement="bottom">
-            <Button
-              leftIcon={<SaveIcon />}
-              onClick={onSave}
-              isDisabled={!isDirty}
-              variant={isDirty ? 'solid' : 'ghost'}
-              colorScheme={isDirty ? 'blue' : 'gray'}
-            >
-              保存
-            </Button>
-          </Tooltip>
-          <Tooltip label="预览" placement="bottom">
+        {/* Actions */}
+        <HStack spacing={2}>
+          <Button
+            leftIcon={<CheckIcon />}
+            size="sm"
+            colorScheme="blue"
+            variant="solid"
+            onClick={onSave}
+          >
+            Save
+          </Button>
+          <Tooltip label="Preview">
             <IconButton
-              icon={<PlayIcon />}
-              onClick={onPreview}
+              icon={<ExternalLinkIcon />}
               aria-label="Preview"
+              size="sm"
+              variant="ghost"
             />
           </Tooltip>
-        </Stack>
-
-        <Divider orientation="vertical" h="24px" />
-
-        {/* 导入导出 */}
-        <Stack direction="row" spacing={1}>
-          <Tooltip label="导出" placement="bottom">
-            <IconButton
-              icon={<DownloadIcon />}
-              onClick={exportDialog.onOpen}
-              aria-label="Export"
-            />
-          </Tooltip>
-          <Tooltip label="导入" placement="bottom">
-            <IconButton
-              icon={<UploadIcon />}
-              onClick={importDialog.onOpen}
-              aria-label="Import"
-            />
-          </Tooltip>
-        </Stack>
-
-        {/* 删除 */}
-        <Stack direction="row" spacing={1} ml="auto">
-          <Tooltip label="删除" placement="bottom">
+          <Tooltip label="Delete">
             <IconButton
               icon={<DeleteIcon />}
-              onClick={onDelete}
-              colorScheme="red"
-              variant="ghost"
               aria-label="Delete"
+              size="sm"
+              variant="ghost"
+              colorScheme="red"
             />
           </Tooltip>
-        </Stack>
-      </Stack>
-
-      {/* 对话框 */}
-      <FlowExportDialog
-        isOpen={exportDialog.isOpen}
-        onClose={exportDialog.onClose}
-        flow={flow}
-      />
-      <FlowImportDialog
-        isOpen={importDialog.isOpen}
-        onClose={importDialog.onClose}
-        onImport={() => {
-          // TODO: 处理导入
-          importDialog.onClose()
-        }}
-      />
-      <FlowSearch
-        isOpen={searchDialog.isOpen}
-        onClose={searchDialog.onClose}
-        nodes={flow.blocks}
-        onNodeSelect={() => {
-          // TODO: 处理节点选择
-          searchDialog.onClose()
-        }}
-      />
-    </>
+        </HStack>
+      </HStack>
+    </Box>
   )
-} 
+}

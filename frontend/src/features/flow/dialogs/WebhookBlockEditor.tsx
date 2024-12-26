@@ -41,7 +41,7 @@ export const WebhookBlockEditor: FC<WebhookBlockEditorProps> = ({ block, ...prop
             value={block.data?.method || 'POST'}
             onChange={e => handleChange('method', e.target.value)}
             aria-labelledby="method-label"
-            title="Select HTTP method"
+            title="Select webhook method"
           >
             <option value="GET">GET</option>
             <option value="POST">POST</option>

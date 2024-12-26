@@ -1,168 +1,90 @@
-import { FC, useState, useCallback, useEffect } from 'react'
-import { Stack, Box } from '@/components/ui'
-import { Flow, Block, BlockType } from '@/types/flow'
-import { FlowCanvas } from './components/FlowCanvas'
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-12-10 12:35:55
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-12-11 16:24:20
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM –
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license.
+ *  仅支持企业内部员工自用，严禁私自用于销售、二次销售或者部署SaaS方式销售
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE
+ *  contact: 270580156@qq.com
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved.
+ */
+import { FC, useCallback, useEffect } from 'react'
+import { Stack, Box, useToast } from '@chakra-ui/react'
+import { useFlowStore } from './store/flowStore'
 import { FlowToolbar } from './components/FlowToolbar'
-import { TextBlockEditor } from './dialogs/TextBlockEditor'
-import { InputBlockEditor } from './dialogs/InputBlockEditor'
-import { ButtonBlockEditor } from './dialogs/ButtonBlockEditor'
-import { WebhookBlockEditor } from './dialogs/WebhookBlockEditor'
-import { ApiBlockEditor } from './dialogs/ApiBlockEditor'
-import { ConditionBlockEditor } from './dialogs/ConditionBlockEditor'
-import { useHistory } from '@/hooks/useHistory'
+import { FlowSidebar } from './components/FlowSidebar'
+import { FlowBoard } from './components/FlowBoard'
+import { BlockSettings } from './components/BlockSettings'
+import { FlowProvider } from './providers/FlowProvider'
+import { flowApi } from '@/api/flow'
 
-interface FlowEditorProps {
-  flow: Flow
-  onChange: (flow: Flow) => void
-}
+export const FlowEditor: FC = () => {
+  const toast = useToast()
+  const flow = useFlowStore((state) => state.flow)
+  const setFlow = useFlowStore((state) => state.setFlow)
 
-export const FlowEditor: FC<FlowEditorProps> = ({ flow: initialFlow, onChange }) => {
-  const {
-    state: flow,
-    set: setFlow,
-    undo,
-    redo,
-    canUndo,
-    canRedo
-  } = useHistory(initialFlow)
+  // 保存功能
+  const handleSave = useCallback(async () => {
+    if (!flow) return
 
-  const [selectedBlock, setSelectedBlock] = useState<Block | null>(null)
-  const [editingBlock, setEditingBlock] = useState<Block | null>(null)
+    try {
+      const updatedFlow = await flowApi.updateFlow(flow.id, flow)
+      setFlow(updatedFlow)
+      toast({
+        title: 'Flow saved',
+        status: 'success',
+      })
+    } catch (error) {
+      toast({
+        title: 'Failed to save flow',
+        status: 'error',
+      })
+    }
+  }, [flow, setFlow, toast])
 
+  // 快捷键
   useEffect(() => {
-    onChange(flow)
-  }, [flow, onChange])
-
-  const handleAddNode = useCallback((type: BlockType) => {
-    const newBlock: Block = {
-      id: `block-${Date.now()}`,
-      type,
-      position: { x: 100, y: 100 },
-      data: {}
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey) {
+        switch (e.key) {
+          case 's':
+            e.preventDefault()
+            handleSave()
+            break
+          case 'z':
+            e.preventDefault()
+            if (e.shiftKey) {
+              useFlowStore.getState().redo()
+            } else {
+              useFlowStore.getState().undo()
+            }
+            break
+        }
+      }
     }
-    setFlow({
-      ...flow,
-      blocks: [...flow.blocks, newBlock]
-    })
-  }, [flow, setFlow])
 
-  const handleNodeSelect = useCallback((nodeId: string) => {
-    const block = flow.blocks.find(b => b.id === nodeId)
-    if (block) {
-      setSelectedBlock(block)
-      setEditingBlock(block)
-    }
-  }, [flow.blocks])
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleSave])
 
-  const handleBlockSave = useCallback((updatedBlock: Block) => {
-    setFlow({
-      ...flow,
-      blocks: flow.blocks.map(b => 
-        b.id === updatedBlock.id ? updatedBlock : b
-      )
-    })
-    setEditingBlock(null)
-  }, [flow, setFlow])
-
-  const handleDeleteBlock = useCallback(() => {
-    if (!selectedBlock) return
-    setFlow({
-      ...flow,
-      blocks: flow.blocks.filter(b => b.id !== selectedBlock.id),
-      edges: flow.edges.filter(e => 
-        e.source !== selectedBlock.id && e.target !== selectedBlock.id
-      )
-    })
-    setSelectedBlock(null)
-  }, [flow, selectedBlock, setFlow])
-
-  const handleConnect = useCallback((params: Connection) => {
-    const newEdge: Edge = {
-      id: `${params.source}-${params.target}`,
-      source: params.source!,
-      target: params.target!,
-      sourceHandle: params.sourceHandle,
-      targetHandle: params.targetHandle
-    }
-    setFlow({
-      ...flow,
-      edges: [...flow.edges, newEdge]
-    })
-  }, [flow, setFlow])
+  if (!flow) return null
 
   return (
-    <Stack spacing={0} h="full">
-      <FlowToolbar
-        flow={flow}
-        onAddNode={handleAddNode}
-        onDelete={selectedBlock ? handleDeleteBlock : undefined}
-        onUndo={canUndo ? undo : undefined}
-        onRedo={canRedo ? redo : undefined}
-        canUndo={canUndo}
-        canRedo={canRedo}
-      />
-
-      <Box flex={1} position="relative">
-        <FlowCanvas
-          flow={flow}
-          onChange={onChange}
-          onNodeSelect={handleNodeSelect}
-        />
-      </Box>
-
-      {editingBlock?.type === BlockType.TEXT && (
-        <TextBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-
-      {editingBlock?.type === BlockType.INPUT && (
-        <InputBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-
-      {editingBlock?.type === BlockType.BUTTON && (
-        <ButtonBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-
-      {editingBlock?.type === BlockType.WEBHOOK && (
-        <WebhookBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-
-      {editingBlock?.type === BlockType.API && (
-        <ApiBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-
-      {editingBlock?.type === BlockType.CONDITION && (
-        <ConditionBlockEditor
-          isOpen={true}
-          onClose={() => setEditingBlock(null)}
-          block={editingBlock}
-          onSave={handleBlockSave}
-        />
-      )}
-    </Stack>
+    <FlowProvider>
+      <Stack h="100vh" spacing={0}>
+        <FlowToolbar flow={flow} onSave={handleSave} />
+        <Stack direction="row" flex={1} spacing={0}>
+          <FlowSidebar />
+          <Box flex={1} bg="gray.50" position="relative">
+            <FlowBoard />
+          </Box>
+          <BlockSettings />
+        </Stack>
+      </Stack>
+    </FlowProvider>
   )
-} 
+}

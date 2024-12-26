@@ -33,7 +33,7 @@ export const InputBlock: FC<InputBlockProps> = ({ data, type, ...props }) => {
               value={data.inputType || 'text'}
               isReadOnly
               aria-labelledby="input-type-label"
-              title="Select input type"
+              title="Input type"
             >
               <option value="text">文本</option>
               <option value="number">数字</option>

@@ -269,7 +269,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  return await NextAuth(req, res, getAuthOptions({ restricted }));
+  // return await NextAuth(req, res, getAuthOptions({ restricted }));
 };
 
 const updateLastActivityDate = async (user: Prisma.User) => {
