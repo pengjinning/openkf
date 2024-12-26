@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-09 21:24:04
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-14 16:36:53
+ * @LastEditTime: 2024-12-26 17:39:37
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -33,8 +33,8 @@ export const useTypebots = ({
 
     setIsLoading(true);
     try {
-      // const response = await fetch(`/api/typebots?workspaceId=${workspaceId}&folderId=${folderId}`);
-      const response = await fetch(`http://127.0.0.1:9003/flow/query/org?pageNumber=0&pageSize=10`);
+      const response = await fetch(`/api/typebots?workspaceId=${workspaceId}&folderId=${folderId}`);
+      // const response = await fetch(`http://127.0.0.1:9003/flow/query/org?pageNumber=0&pageSize=10`);
       console.log("fetchTypebots response: ", response);
       if (!response.ok) {
         throw new Error('Network response was not ok');

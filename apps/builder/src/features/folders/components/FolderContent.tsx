@@ -72,7 +72,7 @@ export const FolderContent = ({ folder }: Props) => {
       showToast({ description: error.message });
     },
     onSuccess: () => {
-      refetchTypebots();
+      // refetchTypebots();
     },
   });
 
