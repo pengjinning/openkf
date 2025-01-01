@@ -33,9 +33,9 @@ import { MoreButton } from "./MoreButton";
 type Props = {
   typebot: TypebotInDashboard;
   isReadOnly?: boolean;
-  draggedTypebot: TypebotInDashboard | undefined;
-  onTypebotUpdated: () => void;
-  onDrag: (position: NodePosition) => void;
+  draggedTypebot?: TypebotInDashboard | undefined;
+  onTypebotUpdated?: () => void;
+  onDrag?: (position: NodePosition) => void;
 };
 
 const TypebotButton = ({

@@ -3,7 +3,7 @@ import type { TypebotInDashboard } from "@/features/dashboard/types";
 import type { NodePosition } from "@/features/graph/providers/GraphDndProvider";
 import { useWorkspace } from "@/features/workspace/WorkspaceProvider";
 import { useToast } from "@/hooks/useToast";
-import { trpc } from "@/lib/trpc";
+// import { trpc } from "@/lib/trpc";
 import {
   Flex,
   HStack,
@@ -28,60 +28,60 @@ import { TypebotCardOverlay } from "./TypebotButtonOverlay";
 type Props = { folder: Prisma.DashboardFolder | null };
 
 export const FolderContent = ({ folder }: Props) => {
-  const { workspace, currentRole } = useWorkspace();
-  const [isCreatingFolder, setIsCreatingFolder] = useState(false);
-  const {
-    setDraggedTypebot,
-    draggedTypebot,
-    mouseOverFolderId,
-    setMouseOverFolderId,
-  } = useTypebotDnd();
-  const [draggablePosition, setDraggablePosition] = useState({ x: 0, y: 0 });
-  const [mousePositionInElement, setMousePositionInElement] = useState({
-    x: 0,
-    y: 0,
-  });
+  // const { workspace, currentRole } = useWorkspace();
+  // const [isCreatingFolder, setIsCreatingFolder] = useState(false);
+  // const {
+  //   setDraggedTypebot,
+  //   draggedTypebot,
+  //   mouseOverFolderId,
+  //   setMouseOverFolderId,
+  // } = useTypebotDnd();
+  // const [draggablePosition, setDraggablePosition] = useState({ x: 0, y: 0 });
+  // const [mousePositionInElement, setMousePositionInElement] = useState({
+  //   x: 0,
+  //   y: 0,
+  // });
 
   const { showToast } = useToast();
 
-  const {
-    data: { folders } = {},
-    isLoading: isFolderLoading,
-    refetch: refetchFolders,
-  } = trpc.folders.listFolders.useQuery(
-    {
-      workspaceId: workspace?.id as string,
-      parentFolderId: folder?.id,
-    },
-    {
-      enabled: !!workspace,
-    },
-  );
+  // const {
+  //   data: { folders } = {},
+  //   isLoading: isFolderLoading,
+  //   refetch: refetchFolders,
+  // } = trpc.folders.listFolders.useQuery(
+  //   {
+  //     workspaceId: workspace?.id as string,
+  //     parentFolderId: folder?.id,
+  //   },
+  //   {
+  //     enabled: !!workspace,
+  //   },
+  // );
 
-  const { mutate: createFolder } = trpc.folders.createFolder.useMutation({
-    onError: (error) => {
-      showToast({ description: error.message });
-    },
-    onSuccess: () => {
-      refetchFolders();
-    },
-  });
+  // const { mutate: createFolder } = trpc.folders.createFolder.useMutation({
+  //   onError: (error) => {
+  //     showToast({ description: error.message });
+  //   },
+  //   onSuccess: () => {
+  //     // refetchFolders();
+  //   },
+  // });
 
-  const { mutate: updateTypebot } = trpc.typebot.updateTypebot.useMutation({
-    onError: (error) => {
-      showToast({ description: error.message });
-    },
-    onSuccess: () => {
-      // refetchTypebots();
-    },
-  });
+  // const { mutate: updateTypebot } = trpc.typebot.updateTypebot.useMutation({
+  //   onError: (error) => {
+  //     showToast({ description: error.message });
+  //   },
+  //   onSuccess: () => {
+  //     // refetchTypebots();
+  //   },
+  // });
 
   const {
     typebots,
     isLoading: isTypebotLoading,
     refetch: refetchTypebots,
   } = useTypebots({
-    workspaceId: workspace?.id,
+    workspaceId: "", //workspace?.id,
     folderId: folder === null ? "root" : folder.id,
     onError: (error) => {
       showToast({
@@ -92,75 +92,75 @@ export const FolderContent = ({ folder }: Props) => {
 
   const moveTypebotToFolder = async (typebotId: string, folderId: string) => {
     if (!typebots) return;
-    updateTypebot({
-      typebotId,
-      typebot: {
-        folderId: folderId === "root" ? null : folderId,
-      },
-    });
+    // updateTypebot({
+    //   typebotId,
+    //   typebot: {
+    //     folderId: folderId === "root" ? null : folderId,
+    //   },
+    // });
   };
 
   const handleCreateFolder = () => {
-    if (!folders || !workspace) return;
-    setIsCreatingFolder(true);
-    createFolder({
-      workspaceId: workspace.id,
-      parentFolderId: folder?.id,
-    });
-    setIsCreatingFolder(false);
+    // if (!folders || !workspace) return;
+    // setIsCreatingFolder(true);
+    // createFolder({
+    //   workspaceId: workspace.id,
+    //   parentFolderId: folder?.id,
+    // });
+    // setIsCreatingFolder(false);
   };
 
-  const handleMouseUp = async () => {
-    if (mouseOverFolderId !== undefined && draggedTypebot)
-      await moveTypebotToFolder(draggedTypebot.id, mouseOverFolderId ?? "root");
-    setMouseOverFolderId(undefined);
-    setDraggedTypebot(undefined);
-  };
-  useEventListener("mouseup", handleMouseUp);
+  // const handleMouseUp = async () => {
+  //   if (mouseOverFolderId !== undefined && draggedTypebot)
+  //     await moveTypebotToFolder(draggedTypebot.id, mouseOverFolderId ?? "root");
+  //   setMouseOverFolderId(undefined);
+  //   setDraggedTypebot(undefined);
+  // };
+  // useEventListener("mouseup", handleMouseUp);
 
-  const handleTypebotDrag =
-    (typebot: TypebotInDashboard) =>
-    ({ absolute, relative }: NodePosition) => {
-      if (draggedTypebot) return;
-      setMousePositionInElement(relative);
-      setDraggablePosition({
-        x: absolute.x - relative.x,
-        y: absolute.y - relative.y,
-      });
-      setDraggedTypebot(typebot);
-    };
+  // const handleTypebotDrag =
+  //   (typebot: TypebotInDashboard) =>
+  //   ({ absolute, relative }: NodePosition) => {
+  //     if (draggedTypebot) return;
+  //     setMousePositionInElement(relative);
+  //     setDraggablePosition({
+  //       x: absolute.x - relative.x,
+  //       y: absolute.y - relative.y,
+  //     });
+  //     setDraggedTypebot(typebot);
+  //   };
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!draggedTypebot) return;
-    const { clientX, clientY } = e;
-    setDraggablePosition({
-      x: clientX - mousePositionInElement.x,
-      y: clientY - mousePositionInElement.y,
-    });
-  };
-  useEventListener("mousemove", handleMouseMove);
+  // const handleMouseMove = (e: MouseEvent) => {
+  //   if (!draggedTypebot) return;
+  //   const { clientX, clientY } = e;
+  //   setDraggablePosition({
+  //     x: clientX - mousePositionInElement.x,
+  //     y: clientY - mousePositionInElement.y,
+  //   });
+  // };
+  // useEventListener("mousemove", handleMouseMove);
 
-  useEffect(() => {
-    if (!draggablePosition || !draggedTypebot) return;
-    const { innerHeight } = window;
-    const scrollSpeed = 10;
-    const scrollMargin = 50;
-    const clientY = draggablePosition.y + mousePositionInElement.y;
-    const scrollY =
-      clientY < scrollMargin
-        ? -scrollSpeed
-        : clientY > innerHeight - scrollMargin
-          ? scrollSpeed
-          : 0;
-    window.scrollBy(0, scrollY);
-    const interval = setInterval(() => {
-      window.scrollBy(0, scrollY);
-    }, 5);
+  // useEffect(() => {
+  //   if (!draggablePosition || !draggedTypebot) return;
+  //   const { innerHeight } = window;
+  //   const scrollSpeed = 10;
+  //   const scrollMargin = 50;
+  //   const clientY = draggablePosition.y + mousePositionInElement.y;
+  //   const scrollY =
+  //     clientY < scrollMargin
+  //       ? -scrollSpeed
+  //       : clientY > innerHeight - scrollMargin
+  //         ? scrollSpeed
+  //         : 0;
+  //   window.scrollBy(0, scrollY);
+  //   const interval = setInterval(() => {
+  //     window.scrollBy(0, scrollY);
+  //   }, 5);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [draggablePosition, draggedTypebot, mousePositionInElement]);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [draggablePosition, draggedTypebot, mousePositionInElement]);
 
   return (
     <Flex w="full" flex="1" justify="center">
@@ -169,24 +169,26 @@ export const FolderContent = ({ folder }: Props) => {
           <Heading as="h1">{folder?.name}</Heading>
         </Skeleton>
         <Stack>
-          <HStack>
+          {/* <HStack>
             {folder && <BackButton id={folder.parentFolderId} />}
             {currentRole !== WorkspaceRole.GUEST && (
               <CreateFolderButton
                 onClick={handleCreateFolder}
-                isLoading={isCreatingFolder || isFolderLoading}
+                // isLoading={isCreatingFolder || isFolderLoading}
+                isLoading={false}
               />
             )}
-          </HStack>
+          </HStack> */}
           <Wrap spacing={4}>
-            {currentRole !== WorkspaceRole.GUEST && (
+            <CreateBotButton isLoading={false} />
+            {/* {currentRole !== WorkspaceRole.GUEST && (
               <CreateBotButton
                 folderId={folder?.id}
                 isLoading={isTypebotLoading}
               />
-            )}
-            {isFolderLoading && <ButtonSkeleton />}
-            {folders &&
+            )} */}
+            {/* {isFolderLoading && <ButtonSkeleton />} */}
+            {/* {folders &&
               folders.map((folder, index) => (
                 <FolderButton
                   key={folder.id}
@@ -195,22 +197,22 @@ export const FolderContent = ({ folder }: Props) => {
                   onFolderDeleted={refetchFolders}
                   onFolderRenamed={() => refetchFolders()}
                 />
-              ))}
-            {isTypebotLoading && <ButtonSkeleton />}
+              ))} */}
+            {/* {isTypebotLoading && <ButtonSkeleton />} */}
             {typebots &&
               typebots.map((typebot) => (
                 <TypebotButton
                   key={typebot.id}
                   typebot={typebot}
-                  draggedTypebot={draggedTypebot}
+                  // draggedTypebot={draggedTypebot}
                   onTypebotUpdated={refetchTypebots}
-                  onDrag={handleTypebotDrag(typebot)}
+                  // onDrag={handleTypebotDrag(typebot)}
                 />
               ))}
           </Wrap>
         </Stack>
       </Stack>
-      {draggedTypebot && (
+      {/* {draggedTypebot && (
         <Portal>
           <TypebotCardOverlay
             typebot={draggedTypebot}
@@ -224,7 +226,7 @@ export const FolderContent = ({ folder }: Props) => {
             transformOrigin="0 0 0"
           />
         </Portal>
-      )}
+      )} */}
     </Flex>
   );
 };

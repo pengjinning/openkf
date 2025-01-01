@@ -2,7 +2,7 @@
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-12-09 21:24:04
  * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-12-14 16:04:58
+ * @LastEditTime: 2024-12-26 18:28:54
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM –
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license.
@@ -28,7 +28,7 @@ import { useTranslate } from "@tolgee/react";
 import type { Plan } from "@typebot.io/prisma/enum";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { DashboardHeader } from "./DashboardHeader";
+// import { DashboardHeader } from "./DashboardHeader";
 
 export const DashboardPage = () => {
   const { t } = useTranslate();
@@ -71,7 +71,7 @@ export const DashboardPage = () => {
   return (
     <Stack minH="100vh">
       {/* <Seo title={workspace?.name ?? t("dashboard.title")} /> */}
-      <DashboardHeader />
+      {/* <DashboardHeader /> */}
       {/* {!workspace?.stripeId && (
         <ParentModalProvider>
           <PreCheckoutModal
